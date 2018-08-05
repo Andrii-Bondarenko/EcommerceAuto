@@ -14,7 +14,7 @@ var gulp = require('gulp'),
     ;
 
 gulp.task('sass', function () {
-    return gulp.src('html-src/sass/**/*.sass')
+    return gulp.src('html-src/sass/**/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('html-src/css'))
         .pipe(browserSync.reload({
@@ -64,7 +64,7 @@ gulp.task('browser-sync',function () {
 });
 
 gulp.task('watch',['browser-sync','css-min','scripts'],function () {
-    gulp.watch('html-src/sass/**/*.sass',['sass']);
+    gulp.watch('html-src/sass/**/*.scss',['sass']);
     gulp.watch('html-src/*.html',browserSync.reload);
     gulp.watch('html-src/js/**/*.js',browserSync.reload);
 });
