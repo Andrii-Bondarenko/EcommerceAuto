@@ -1,0 +1,120 @@
+.header {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  z-index: 100;
+  position: relative; }
+  .header-content {
+    align-items: center;
+    display: flex; }
+  .header__top {
+    padding: 10px 0;
+    background-color: #C00002; }
+  .header__main {
+    padding: 10px 0; }
+  .header__phones {
+    margin-right: 40px;
+    display: flex; }
+    .header__phones > * {
+      margin-right: 30px; }
+      .header__phones > *:last-child {
+        margin-right: 0; }
+  .header__phone {
+    color: #4b4b4b;
+    display: block;
+    font-size: 24px; }
+  .header__logo {
+    margin-right: 40px; }
+  .header__bottom {
+    background-color: #e3e3e3; }
+  .header__info {
+    display: flex;
+    flex-flow: column;
+    align-items: center; }
+  .header__search {
+    padding: 10px 0 10px;
+    width: 100%; }
+  .header__timetable {
+    padding: 15px 0 5px;
+    font-size: 16px; }
+  .header__title {
+    padding: 5px 0 5px;
+    font-size: 24px;
+    margin-right: 20px;
+    padding: 0 0 10px; }
+
+.header-nav__list {
+  display: flex;
+  text-align: center; }
+
+.header-nav__item {
+  margin-right: 30px; }
+  .header-nav__item:last-child {
+    margin-right: 0; }
+
+.header-nav__link {
+  font-size: 14px;
+  line-height: 1.67;
+  color: white; }
+
+.logo__img {
+  height: 90px; }
+
+.search {
+  display: flex; }
+  .search__input {
+    width: calc(80% - 20px);
+    height: 40px;
+    display: block;
+    border: 1px solid #C00002;
+    padding-left: 15px;
+    font-size: 16px;
+    color: #4b4b4b; }
+  .search__button {
+    width: 20%;
+    height: 40px;
+    display: block;
+    background-color: #C00002;
+    color: white;
+    font-size: 16px; }
+
+.timetable {
+  display: flex;
+  align-items: center; }
+  .timetable__label {
+    color: #4b4b4b;
+    display: flex;
+    margin-right: 30px;
+    padding: 0 0 10px; }
+    .timetable__label:last-child {
+      margin-right: 0;
+      flex-flow: column;
+      align-items: center; }
+  .timetable__label-time {
+    padding: 0 0 3px; }
+
+.basket {
+  display: flex;
+  flex-flow: column;
+  align-items: center; }
+  .basket__img {
+    height: 60px; }
+  .basket__title {
+    padding: 0 0 20px; }
+
+.bottom-nav__list {
+  display: flex;
+  align-items: center; }
+
+.bottom-nav__item {
+  margin-right: 40px; }
+  .bottom-nav__item:last-child {
+    margin-right: 0; }
+
+.bottom-nav__link {
+  border: 2px solid transparent;
+  padding: 10px 0;
+  display: block;
+  line-height: 1.88;
+  color: #4b4b4b; }
+  .bottom-nav__link:hover {
+    border-bottom-color: #C00002; }
