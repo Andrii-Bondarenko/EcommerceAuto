@@ -1,7 +1,10 @@
 @import "vars";
 
 .header {
-
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+  box-sizing: border-box;
+  z-index: 100;
+  position: relative;
   &-content{
     align-items: center;
     display: flex;
@@ -36,7 +39,6 @@
     color: $header-top-font;
     display: block;
     font-size: 24px;
-    font-weight: 600;
   }
 
   &__logo {
@@ -45,6 +47,7 @@
 
   &__bottom {
     background-color: $header-top;
+
   }
   &__info{
     display: flex;
@@ -64,7 +67,6 @@
     padding: 5px 0 5px;
     font-size: 24px;
     margin-right: 20px;
-    font-weight: 600;
     padding: 0 0 10px;
   }
 }
@@ -121,7 +123,6 @@
   align-items: center;
 
   &__label {
-    font-weight: 600;
     color:$header-top-font;
     display: flex;
     margin-right: 30px;
@@ -147,7 +148,6 @@
   }
   &__title {
     padding: 0 0 20px;
-    font-weight: 600;
   }
 }
 
@@ -168,7 +168,6 @@
     padding: 10px 0;
     display: block;
     line-height: 1.88;
-    font-weight: 600;
     color:$header-top-font;
     &:hover{
       border-bottom-color: $mainRed;
