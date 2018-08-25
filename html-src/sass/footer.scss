@@ -26,4 +26,13 @@
     }
   }
 
+  &__link{
+    display: block;
+    color:$header-top-font;
+    cursor: pointer;
+    &:hover{
+      color:$mainRed;
+    }
+  }
+
 }

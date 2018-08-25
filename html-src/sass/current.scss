@@ -92,7 +92,43 @@
       display: block;
       font-size: 16px;
     }
+  }
+}
 
+.breadcrumbs-block {
+  padding: 10px;
+  color: $header-top-font;
+  font-size: $little-font-size;
+  border-bottom: 1px solid $header-top;
+  &__list {
+    display: flex;
+    flex-flow: row;
+  }
+  &__item {
+    display: flex;
+    flex-flow: row;
+    a {
+      color: $header-top-font;
+      display: block;
+      &:hover {
+        color:$mainRed;
+      }
 
+    }
+    span {
+      display: block;
+      color: $mainRed;
+    }
+    &:before {
+      content: '/';
+      display: block;
+      padding: 0 5px;
+    }
+
+    &:first-child {
+      &:before {
+        content: '';
+      }
+    }
   }
 }

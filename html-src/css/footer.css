@@ -17,3 +17,9 @@
     align-items: center; }
     .footer__contacts div {
       margin-right: 10px; }
+  .footer__link {
+    display: block;
+    color: #4b4b4b;
+    cursor: pointer; }
+    .footer__link:hover {
+      color: #C00002; }

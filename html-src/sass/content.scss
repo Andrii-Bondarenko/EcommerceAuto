@@ -1,0 +1,17 @@
+@import "vars";
+.content-block {
+  &_content {
+    display: flex;
+    flex-flow: column;
+  }
+  &__title {
+    font-size: $big-font-size;
+    padding: 10px 0;
+    font-size: 40px;
+  }
+  &__text {
+    font-size: $little-font-size;
+    padding: 10px 0;
+    line-height: 1.67;
+  }
+}
