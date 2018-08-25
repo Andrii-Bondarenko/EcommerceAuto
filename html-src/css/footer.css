@@ -1,0 +1,19 @@
+.footer {
+  margin-top: 40px; }
+  .footer__main {
+    padding: 15px 0;
+    background: #e3e3e3;
+    font-size: 14px;
+    line-height: 1.67;
+    color: #4b4b4b; }
+  .footer__content {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between; }
+  .footer__contacts {
+    display: flex;
+    flex-flow: row;
+    align-items: center; }
+    .footer__contacts div {
+      margin-right: 10px; }
