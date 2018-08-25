@@ -1,0 +1,29 @@
+@import "vars";
+
+.footer {
+  margin-top: 40px;
+  &__main {
+    padding: 15px 0;
+    background: $header-top;
+    font-size: 14px;
+    line-height: 1.67;
+    color: $header-top-font
+
+  }
+  &__content {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content:space-between;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    div {
+      margin-right: 10px;
+    }
+  }
+
+}

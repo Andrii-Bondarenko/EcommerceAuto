@@ -39,3 +39,32 @@
     display: flex;
     justify-content: center;
     align-items: flex-start; }
+
+.phone-block {
+  background-color: #e3e3e3;
+  margin-top: 10px;
+  padding: 15px 0; }
+  .phone-block__title {
+    font-size: 24px; }
+  .phone-block__content {
+    display: flex;
+    flex-flow: column;
+    align-items: center; }
+    .phone-block__content div {
+      padding: 5px 0; }
+  .phone-block__form {
+    display: flex; }
+    .phone-block__form input {
+      height: 40px;
+      border: 1px solid #C00002;
+      padding-left: 10px;
+      font-size: 16px;
+      color: #4b4b4b;
+      width: 80%;
+      display: block; }
+    .phone-block__form button {
+      color: white;
+      background-color: #C00002;
+      width: 20%;
+      display: block;
+      font-size: 16px; }

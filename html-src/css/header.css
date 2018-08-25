@@ -5,7 +5,8 @@
   position: relative; }
   .header-content {
     align-items: center;
-    display: flex; }
+    display: flex;
+    justify-content: space-between; }
   .header__top {
     padding: 10px 0;
     background-color: #C00002; }
