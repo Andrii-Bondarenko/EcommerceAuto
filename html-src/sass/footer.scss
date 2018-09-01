@@ -15,6 +15,9 @@
     flex-flow: row;
     align-items: center;
     justify-content:space-between;
+    @include mq('phone', max) {
+      justify-content:space-around;
+    }
   }
 
   &__contacts {
@@ -25,7 +28,12 @@
       margin-right: 10px;
     }
   }
+  &__menu {
+    @include mq('phone', max) {
+      display: none;
 
+    }
+  }
   &__link{
     display: block;
     color:$header-top-font;
@@ -34,5 +42,44 @@
       color:$mainRed;
     }
   }
+  &__timetable {
+    @include mq('phone', max) {
+      display: none;
+    }
+  }
+  &__callback {
+    input {
+      border: 1px solid $mainRed;
+      height: 24px;
+      padding-left:10px;
+    }
+    @include mq('phone-small', max) {
+      display: none;
+    }
+  }
+}
 
+.callback {
+  align-items: center;
+
+  &__title {
+     padding: 5px 0;
+    text-align: center;
+   }
+  &__input {
+
+  }
+  &__button {
+    padding: 5px 0;
+    button {
+      height: 24px;
+      width: 100%;
+    }
+  }
+}
+
+.logo-footer {
+  &__img {
+    height: 90px;
+  }
 }

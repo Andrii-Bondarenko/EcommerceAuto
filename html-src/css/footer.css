@@ -11,15 +11,45 @@
     flex-flow: row;
     align-items: center;
     justify-content: space-between; }
+    @media only screen and (max-width: 767px) {
+      .footer__content {
+        justify-content: space-around; } }
   .footer__contacts {
     display: flex;
     flex-flow: row;
     align-items: center; }
     .footer__contacts div {
       margin-right: 10px; }
+  @media only screen and (max-width: 767px) {
+    .footer__menu {
+      display: none; } }
   .footer__link {
     display: block;
     color: #4b4b4b;
     cursor: pointer; }
     .footer__link:hover {
       color: #C00002; }
+  @media only screen and (max-width: 767px) {
+    .footer__timetable {
+      display: none; } }
+  .footer__callback input {
+    border: 1px solid #C00002;
+    height: 24px;
+    padding-left: 10px; }
+  @media only screen and (max-width: 479px) {
+    .footer__callback {
+      display: none; } }
+
+.callback {
+  align-items: center; }
+  .callback__title {
+    padding: 5px 0;
+    text-align: center; }
+  .callback__button {
+    padding: 5px 0; }
+    .callback__button button {
+      height: 24px;
+      width: 100%; }
+
+.logo-footer__img {
+  height: 90px; }

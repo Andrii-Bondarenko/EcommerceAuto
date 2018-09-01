@@ -9,3 +9,28 @@ $mainRedHover: #E03838;
 
 $big-font-size:24px;
 $little-font-size:16px;
+
+
+$breakpoints: (
+        "w400":            400px,
+        "phone-small":     480px,
+        "phone":           768px,
+        "tablet":          992px,
+        "desktop":         1200px
+);
+
+
+// Media query mixin
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+
+    @if $type == max {
+      $width: $width - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}

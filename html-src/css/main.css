@@ -563,6 +563,9 @@ a {
 .icon-file-text2:before {
   content: "\e926"; }
 
+.icon-bars:before {
+  content: "\f0c9"; }
+
 .header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
@@ -580,6 +583,10 @@ a {
   .header__phones {
     margin-right: 40px;
     display: flex; }
+    @media only screen and (max-width: 991px) {
+      .header__phones {
+        flex-flow: column;
+        margin-right: 0; } }
     .header__phones > * {
       margin-right: 30px; }
       .header__phones > *:last-child {
@@ -588,14 +595,23 @@ a {
     color: #4b4b4b;
     display: block;
     font-size: 24px; }
+    @media only screen and (max-width: 991px) {
+      .header__phone {
+        padding: 5px 0; } }
   .header__logo {
-    margin-right: 40px; }
+    margin-right: 10px; }
   .header__bottom {
     background-color: #e3e3e3; }
   .header__info {
     display: flex;
     flex-flow: column;
     align-items: center; }
+    @media only screen and (max-width: 767px) {
+      .header__info {
+        width: 100%; } }
+    @media only screen and (max-width: 767px) {
+      .header__info:last-child {
+        display: none; } }
   .header__search {
     padding: 10px 0 10px;
     width: 100%; }
@@ -607,6 +623,36 @@ a {
     font-size: 24px;
     margin-right: 20px;
     padding: 0 0 10px; }
+    @media only screen and (max-width: 767px) {
+      .header__title {
+        align-items: center;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 0 0; } }
+  @media only screen and (max-width: 767px) {
+    .header__name-phone {
+      display: flex;
+      flex-flow: column; } }
+  .header__logo-mobile {
+    display: none;
+    margin-right: 10px; }
+    @media only screen and (max-width: 767px) {
+      .header__logo-mobile {
+        display: block; } }
+    .header__logo-mobile img {
+      height: 90px;
+      display: block; }
+  .header__title-phone {
+    display: none;
+    padding: 10px 0; }
+    .header__title-phone div:first-child {
+      margin-right: 10px;
+      padding-bottom: 5px; }
+    @media only screen and (max-width: 767px) {
+      .header__title-phone {
+        display: flex;
+        flex-flow: wrap; } }
 
 .header-nav__list {
   display: flex;
@@ -621,6 +667,10 @@ a {
   font-size: 14px;
   line-height: 1.67;
   color: white; }
+
+@media only screen and (max-width: 767px) {
+  .logo {
+    display: none; } }
 
 .logo__img {
   height: 90px; }
@@ -646,6 +696,9 @@ a {
 .timetable {
   display: flex;
   align-items: center; }
+  @media only screen and (max-width: 991px) {
+    .timetable {
+      display: none; } }
   .timetable__label {
     color: #4b4b4b;
     display: flex;
@@ -662,6 +715,9 @@ a {
   display: flex;
   flex-flow: column;
   align-items: center; }
+  @media only screen and (max-width: 991px) {
+    .basket {
+      display: none; } }
   .basket__img {
     height: 60px; }
   .basket__title {
@@ -670,6 +726,9 @@ a {
 .bottom-nav__list {
   display: flex;
   align-items: center; }
+  @media only screen and (max-width: 991px) {
+    .bottom-nav__list {
+      display: none; } }
 
 .bottom-nav__item {
   margin-right: 40px; }
@@ -684,6 +743,14 @@ a {
   color: #4b4b4b; }
   .bottom-nav__link:hover {
     border-bottom-color: #C00002; }
+
+.bottom-nav__list-phone {
+  font-size: 30px;
+  display: none;
+  padding: 10px 0; }
+  @media only screen and (max-width: 991px) {
+    .bottom-nav__list-phone {
+      display: block; } }
 
 .main {
   min-height: 600px; }
@@ -832,18 +899,48 @@ a {
     flex-flow: row;
     align-items: center;
     justify-content: space-between; }
+    @media only screen and (max-width: 767px) {
+      .footer__content {
+        justify-content: space-around; } }
   .footer__contacts {
     display: flex;
     flex-flow: row;
     align-items: center; }
     .footer__contacts div {
       margin-right: 10px; }
+  @media only screen and (max-width: 767px) {
+    .footer__menu {
+      display: none; } }
   .footer__link {
     display: block;
     color: #4b4b4b;
     cursor: pointer; }
     .footer__link:hover {
       color: #C00002; }
+  @media only screen and (max-width: 767px) {
+    .footer__timetable {
+      display: none; } }
+  .footer__callback input {
+    border: 1px solid #C00002;
+    height: 24px;
+    padding-left: 10px; }
+  @media only screen and (max-width: 479px) {
+    .footer__callback {
+      display: none; } }
+
+.callback {
+  align-items: center; }
+  .callback__title {
+    padding: 5px 0;
+    text-align: center; }
+  .callback__button {
+    padding: 5px 0; }
+    .callback__button button {
+      height: 24px;
+      width: 100%; }
+
+.logo-footer__img {
+  height: 90px; }
 
 .content-block_content {
   display: flex;
