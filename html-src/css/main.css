@@ -1,4 +1,5 @@
 /* Magnific Popup CSS */
+@import url(../libs/slick-carousel/slick/slick.css);
 .mfp-bg {
   top: 0;
   left: 0;
@@ -731,3 +732,28 @@ a {
   font-size: 14px;
   padding: 10px 0;
   line-height: 1.67; }
+
+.product-block_product {
+  display: flex;
+  flex-flow: column; }
+
+.product-block__title {
+  font-size: 24px;
+  padding: 10px 0;
+  font-size: 40px; }
+
+.slider-product__main {
+  margin-bottom: 10px;
+  border: 1px solid #C00002; }
+
+.slider-product__item {
+  margin-right: 10px;
+  border: 1px solid #C00002; }
+
+.main-product {
+  display: flex;
+  align-items: center; }
+  .main-product__img {
+    display: block;
+    max-width: 530px;
+    margin-right: 20px; }

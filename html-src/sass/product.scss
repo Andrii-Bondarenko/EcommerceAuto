@@ -1,0 +1,33 @@
+@import "vars";
+.product-block {
+  &_product {
+    display: flex;
+    flex-flow: column;
+  }
+  &__title {
+    font-size: $big-font-size;
+    padding: 10px 0;
+    font-size: 40px;
+  }
+}
+.slider-product {
+
+  &__main {
+    margin-bottom: 10px;
+    border: 1px solid $mainRed;
+  }
+  &__item {
+      margin-right: 10px;
+      border: 1px solid $mainRed;
+  }
+}
+
+.main-product{
+  display: flex;
+  align-items: center;
+  &__img {
+    display: block;
+    max-width: 530px;
+    margin-right: 20px;
+  }
+}
