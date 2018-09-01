@@ -1,0 +1,19 @@
+@import "vars";
+.error {
+  &__content {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    div {
+      line-height: 1.67;
+      padding: 10px 30px;
+      font-size: $big-font-size;
+      img {
+        display: inline-block;
+        max-width: 100%;
+      }
+    }
+  }
+
+}
+

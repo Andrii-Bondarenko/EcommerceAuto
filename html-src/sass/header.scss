@@ -10,16 +10,10 @@
     display: flex;
     justify-content: space-between;
   }
-  &__nav {
-    &.header-nav {
 
-    }
-  }
   &__top {
     padding: 10px 0;
     background-color: $mainRed;
-
-
   }
 
   &__main {
@@ -65,7 +59,7 @@
   }
 
   &__title {
-    padding: 5px 0 5px;
+    min-width: 220px;
     font-size: 24px;
     margin-right: 20px;
     padding: 0 0 10px;

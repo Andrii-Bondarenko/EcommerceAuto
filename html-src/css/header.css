@@ -38,7 +38,7 @@
     padding: 15px 0 5px;
     font-size: 16px; }
   .header__title {
-    padding: 5px 0 5px;
+    min-width: 220px;
     font-size: 24px;
     margin-right: 20px;
     padding: 0 0 10px; }

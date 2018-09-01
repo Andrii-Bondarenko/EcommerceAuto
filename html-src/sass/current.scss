@@ -1,6 +1,6 @@
 @import "vars";
 .main {
-
+  min-height: 600px;
 }
 
 .first-catalog {
@@ -131,4 +131,47 @@
       }
     }
   }
+}
+
+.red {
+   color: white;
+   background-color: $mainRed;
+ }
+
+.button {
+   font-size: 16px;
+   display: block;
+   line-height: 1.88;
+   height: 40px;
+   padding: 1px 20px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color:$mainRedHover
+}
+
+.list {
+  font-size: $little-font-size;
+  li {
+    padding: 2px 0;
+
+  }
+  li:before {
+    padding-right: 10px;
+    content: "\ea10";
+    font-family: icomoon !important;
+    color: $mainRed;
+  }
+}
+
+.grey {
+  background-color: $header-top;
+}
+
+.link {
+  color:$mainRed;
+}
+.link:hover {
+  text-decoration: underline;
 }

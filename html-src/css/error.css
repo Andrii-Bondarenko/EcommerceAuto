@@ -1,0 +1,11 @@
+.error__content {
+  display: flex;
+  flex-flow: column;
+  text-align: center; }
+  .error__content div {
+    line-height: 1.67;
+    padding: 10px 30px;
+    font-size: 24px; }
+    .error__content div img {
+      display: inline-block;
+      max-width: 100%; }

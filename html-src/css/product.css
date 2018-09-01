@@ -1,0 +1,113 @@
+.product-block__content {
+  display: flex;
+  flex-flow: column; }
+
+.product-block__title {
+  font-size: 24px;
+  padding: 10px 0;
+  font-size: 40px; }
+
+.slider-product__main {
+  margin-bottom: 10px;
+  border: 1px solid #C00002;
+  outline: none; }
+
+.slider-product__item {
+  margin-right: 10px;
+  border: 1px solid #C00002;
+  outline: none;
+  cursor: pointer; }
+
+.main-product {
+  display: flex;
+  flex-wrap: wrap; }
+  .main-product__img {
+    display: block;
+    max-width: 530px;
+    margin-right: 20px; }
+
+.product-info {
+  display: flex;
+  flex-flow: column;
+  padding: 0 10px; }
+  .product-info__presence {
+    font-size: 24px;
+    color: #009A00; }
+  .product-info__buttons {
+    padding: 15px 0; }
+
+.price {
+  display: flex;
+  align-items: flex-start;
+  font-size: 24px;
+  padding: 10px 0; }
+  .price__title {
+    margin-right: 10px; }
+  .price .action {
+    font-size: 16px;
+    text-decoration: line-through;
+    text-decoration-color: #C00002; }
+  .price__value-action {
+    color: #C00002; }
+  .price__value {
+    margin-right: 10px; }
+  .price__block-action {
+    background-color: #C00002;
+    color: white;
+    padding: 1px 10px; }
+
+.information {
+  font-size: 16px;
+  display: flex;
+  flex-flow: column; }
+  .information__block {
+    display: flex;
+    flex-flow: wrap;
+    padding: 5px 0; }
+  .information__title {
+    font-weight: 600;
+    margin-right: 2px; }
+
+.helper {
+  margin-top: 10px;
+  display: flex;
+  flex-flow: column; }
+  .helper__title {
+    color: #C00002;
+    padding: 5px 0; }
+  .helper__icon {
+    padding-right: 5px; }
+  .helper__text {
+    padding: 0 10px; }
+
+.product-addition {
+  margin-top: 20px; }
+  .product-addition .title {
+    padding: 10px 0;
+    font-size: 24px;
+    color: #C00002; }
+    .product-addition .title i {
+      padding-right: 10px; }
+  .product-addition .feature {
+    display: flex;
+    flex-flow: column; }
+    .product-addition .feature__main {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 0; }
+    .product-addition .feature__item {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 5px 0; }
+    .product-addition .feature__name {
+      font-weight: 600;
+      padding-right: 5px; }
+    .product-addition .feature__first-block {
+      flex: 1; }
+    .product-addition .feature__second-block {
+      flex: 1; }
+  .product-addition .description__main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    line-height: 1.67; }
