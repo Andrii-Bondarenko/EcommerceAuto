@@ -213,17 +213,35 @@
 }
 
 .bottom-nav{
+
   &__list{
     display: flex;
     align-items: center;
     @include mq('tablet', max) {
-      display: none;
+      display: block;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      visibility: hidden;
+      background: #1e262c;
     }
+
   }
   &__item {
     margin-right: 40px;
     &:last-child {
       margin-right: 0;
+    }
+    @include mq('tablet', max) {
+      margin-right: 40px;
+      &:last-child {
+        margin-right: 40px;
+      }
     }
   }
 
@@ -236,8 +254,19 @@
     &:hover{
       border-bottom-color: $mainRed;
     }
+    @include mq('tablet', max) {
+      padding: 0 15px;
+      display: block;
+      font-size: $big-font-size;
+      font-weight: 500;
+      border-bottom: 1px solid #33414a;
+      color: #ffffff;
+
+    }
+
   }
   &__list-phone{
+    height: 54px;
     @include mq('tablet', max) {
       display: block;
     }
@@ -247,3 +276,67 @@
   }
 }
 
+.cd-nav-trigger {
+  position: relative;
+  outline: none;
+  display: block;
+  width: 35px;
+  span {
+    outline: none;
+    display: block;
+    height: 2px;
+    width: 25px;
+    background: $header-top-font;
+  }
+  &:before {
+    outline: none;
+    margin-top: 6px;
+    margin-bottom: 7px;
+    content: '';
+    display: block;
+    height: 2px;
+    width: 25px;
+    background: $header-top-font;
+  }
+
+  &:after {
+    outline: none;
+    margin: 7px 0;
+    content: '';
+    display: block;
+    height: 2px;
+    width: 25px;
+    background: $header-top-font;
+  }
+}
+.nav-is-visible {
+  visibility: visible;
+
+}
+
+.open {
+  position: fixed;
+  left:225px;
+  z-index: 30;
+  top:10px;
+  span {
+    display: none;
+  }
+  &:before {
+    background: white;
+    -webkit-transform: translateY(0) rotate(-45deg);
+    -moz-transform: translateY(0) rotate(-45deg);
+    -ms-transform: translateY(0) rotate(-45deg);
+    -o-transform: translateY(0) rotate(-45deg);
+    transform: translateY(0) rotate(-45deg);
+  }
+  &:after {
+    margin-top: -9px;
+    background: white;
+    -webkit-transform: translateY(0) rotate(45deg);
+    -moz-transform: translateY(0) rotate(45deg);
+    -ms-transform: translateY(0) rotate(45deg);
+    -o-transform: translateY(0) rotate(45deg);
+    transform: translateY(0) rotate(45deg);
+  }
+}

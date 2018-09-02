@@ -65,12 +65,18 @@
       color: #4b4b4b;
       width: 80%;
       display: block; }
+      @media only screen and (max-width: 479px) {
+        .phone-block__form input {
+          width: 70%; } }
     .phone-block__form button {
       color: white;
       background-color: #C00002;
       width: 20%;
       display: block;
       font-size: 16px; }
+      @media only screen and (max-width: 479px) {
+        .phone-block__form button {
+          width: 30%; } }
 
 .breadcrumbs-block {
   padding: 10px;

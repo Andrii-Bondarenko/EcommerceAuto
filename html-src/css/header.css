@@ -160,12 +160,27 @@
   align-items: center; }
   @media only screen and (max-width: 991px) {
     .bottom-nav__list {
-      display: none; } }
+      display: block;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      visibility: hidden;
+      background: #1e262c; } }
 
 .bottom-nav__item {
   margin-right: 40px; }
   .bottom-nav__item:last-child {
     margin-right: 0; }
+  @media only screen and (max-width: 991px) {
+    .bottom-nav__item {
+      margin-right: 40px; }
+      .bottom-nav__item:last-child {
+        margin-right: 40px; } }
 
 .bottom-nav__link {
   border: 2px solid transparent;
@@ -175,11 +190,75 @@
   color: #4b4b4b; }
   .bottom-nav__link:hover {
     border-bottom-color: #C00002; }
+  @media only screen and (max-width: 991px) {
+    .bottom-nav__link {
+      padding: 0 15px;
+      display: block;
+      font-size: 24px;
+      font-weight: 500;
+      border-bottom: 1px solid #33414a;
+      color: #ffffff; } }
 
 .bottom-nav__list-phone {
+  height: 54px;
   font-size: 30px;
   display: none;
   padding: 10px 0; }
   @media only screen and (max-width: 991px) {
     .bottom-nav__list-phone {
       display: block; } }
+
+.cd-nav-trigger {
+  position: relative;
+  outline: none;
+  display: block;
+  width: 35px; }
+  .cd-nav-trigger span {
+    outline: none;
+    display: block;
+    height: 2px;
+    width: 25px;
+    background: #4b4b4b; }
+  .cd-nav-trigger:before {
+    outline: none;
+    margin-top: 6px;
+    margin-bottom: 7px;
+    content: '';
+    display: block;
+    height: 2px;
+    width: 25px;
+    background: #4b4b4b; }
+  .cd-nav-trigger:after {
+    outline: none;
+    margin: 7px 0;
+    content: '';
+    display: block;
+    height: 2px;
+    width: 25px;
+    background: #4b4b4b; }
+
+.nav-is-visible {
+  visibility: visible; }
+
+.open {
+  position: fixed;
+  left: 225px;
+  z-index: 30;
+  top: 10px; }
+  .open span {
+    display: none; }
+  .open:before {
+    background: white;
+    -webkit-transform: translateY(0) rotate(-45deg);
+    -moz-transform: translateY(0) rotate(-45deg);
+    -ms-transform: translateY(0) rotate(-45deg);
+    -o-transform: translateY(0) rotate(-45deg);
+    transform: translateY(0) rotate(-45deg); }
+  .open:after {
+    margin-top: -9px;
+    background: white;
+    -webkit-transform: translateY(0) rotate(45deg);
+    -moz-transform: translateY(0) rotate(45deg);
+    -ms-transform: translateY(0) rotate(45deg);
+    -o-transform: translateY(0) rotate(45deg);
+    transform: translateY(0) rotate(45deg); }

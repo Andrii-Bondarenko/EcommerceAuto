@@ -84,6 +84,10 @@
       color: $header-top-font;
       width: 80%;
       display: block;
+      @include mq('phone-small', max) {
+        width: 70%;
+      }
+
     }
     button{
       color:white;
@@ -91,6 +95,9 @@
       width: 20%;
       display: block;
       font-size: 16px;
+      @include mq('phone-small', max) {
+        width: 30%;
+      }
     }
   }
 }

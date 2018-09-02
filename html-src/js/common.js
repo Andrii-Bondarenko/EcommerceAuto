@@ -15,4 +15,12 @@ $(document).ready(function () {
         centerMode: true,
         focusOnSelect: true
     });
-})
+
+
+    $('.cd-nav-trigger').on('click', function(event){
+        console.log('1');
+        event.preventDefault();
+        $('.bottom-nav__list').toggleClass('nav-is-visible');
+        $('.cd-nav-trigger').toggleClass('open');
+    });
+});
