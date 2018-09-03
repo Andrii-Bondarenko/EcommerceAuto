@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     cache = require('gulp-cache')
-    ;
+;
 
 gulp.task('sass', function () {
     return gulp.src('html-src/sass/**/*.scss')
@@ -91,11 +91,9 @@ gulp.task('build',['clean','img','css-min','scripts'],function () {
 });
 
 gulp.task('clean',function () {
-
     return del.sync('public')
 });
 
 gulp.task('clearCache',function () {
-
     return cache.clearAll();
 });
