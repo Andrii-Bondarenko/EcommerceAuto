@@ -3,9 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * @UniqueEntity("alias", message="Этот алиас уже сущевствует")
+ *
  * @ORM\Entity(repositoryClass="App\Repository\BrandRepository")
+ * @Vich\Uploadable
  */
 class Brand
 {
@@ -17,41 +24,158 @@ class Brand
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+    /**
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $img;
+    private $alias;
 
-    public function getId(): ?int
+    /**
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Alias cannot be longer than {{ limit }} characters"
+     * )
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="brand_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @var \DateTime
+     */
+    private $description;
+
+    /**
+     * @return \DateTime
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param \DateTime $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName($name)
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getImg(): ?string
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
     {
-        return $this->img;
+        return $this->updatedAt;
     }
 
-    public function setImg(string $img): self
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
     {
-        $this->img = $img;
-
-        return $this;
+        $this->updatedAt = new \DateTime('now');
     }
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param mixed $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
+
+    /**
+     * @param mixed $alias
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File $imageFile
+     */
+    public function setImageFile($imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+
+
 }

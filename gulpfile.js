@@ -74,7 +74,8 @@ gulp.task('watch',['browser-sync','css-min','scripts'],function () {
 gulp.task('build',['clean','img','css-min','scripts'],function () {
 
     var buildCss = gulp.src([
-        'html-src/css/main.min.css'
+        'html-src/css/main.min.css',
+        'html-src/css/login.css'
     ]).pipe(gulp.dest('public/css'));
 
     var buildFonts = gulp.src([
@@ -85,13 +86,21 @@ gulp.task('build',['clean','img','css-min','scripts'],function () {
         'html-src/js/**/*.js'
     ]).pipe(gulp.dest('public/js'));
 
+    var buildLibs = gulp.src([
+        'html-src/libs/**/*'
+    ]).pipe(gulp.dest('public/libs'));
+
     var buildHtml = gulp.src([
         'html-src/*.html'
     ]).pipe(gulp.dest('public'));
 });
 
 gulp.task('clean',function () {
-    return del.sync('public')
+    del.sync('public/css');
+    del.sync('public/js');
+    del.sync('public/fonts');
+    del.sync('public/libs');
+    del.sync('public/img/design');
 });
 
 gulp.task('clearCache',function () {

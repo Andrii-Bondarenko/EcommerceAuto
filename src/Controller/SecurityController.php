@@ -17,16 +17,6 @@ class SecurityController extends Controller
 {
 
     /**
-     * @Route("/cms", name="login2")
-     */
-    public function login2()
-    {
-        return new Response('asdasd',200);
-    }
-
-
-
-    /**
      * @Route("/cms/login", name="login")
      */
     public function login(Request $request, AuthenticationUtils $authUtils)
