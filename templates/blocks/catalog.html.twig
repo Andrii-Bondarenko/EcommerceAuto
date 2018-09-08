@@ -1,17 +1,16 @@
 {% block catalog %}
     <div class="main__first-catalog first-catalog">
         <div class="container">
-            <div class="first-catalog__title">{{ data.catalog_name }}
-                <div class="first-catalog__marks" >
-                {% for key,item in data.catalog %}
+            <div class="first-catalog__title">{{ data.catalog.name }}</div>
+            <div class="first-catalog__marks" >
+                {% for key,item in data.catalog.items %}
                     <div class="first-catalog__item">
-                        <a href="#" class="first-catalog__link">
+                        <a href="{{ getCatalogUrl(item,data.catalog_type) }}" class="first-catalog__link">
                             <img src="{{ asset('/img/brands/'~item.image)|imagine_filter('catalog_item_main') }}" class="first-catalog__img" >
                             <span class="first-catalog__name">{{ item.name }}</span>
                         </a>
                     </div>
                 {% endfor %}
-                </div>
             </div>
         </div>
     </div>

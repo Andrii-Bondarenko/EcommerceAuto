@@ -1,0 +1,27 @@
+easy_admin:
+    entities:
+        Category:
+            class: App\Entity\Category
+
+            list:
+                fields:
+                    - { property: 'name', type: 'text' }
+                    - { property: 'active', type: 'toggle' }
+                    - { property: 'showBottom', type: 'toggle', label: 'Show Bottom' }
+                    - { property: 'image', type: 'image', base_path: '/img/brands' }
+            edit:
+                fields:
+                    - { property: 'active', label: 'Active'}
+                    - { property: 'showBottom', label: 'Show Bottom' }
+                    - { property: 'name', type: 'text' }
+                    - { property: 'alias', type: 'text' }
+                    - { property: 'imageFile', type: 'vich_image'}
+                    - { property: 'description', type: 'textarea', css_class: "ckeditor"}
+            new:
+                fields:
+                    - { property: 'active',label: 'Active'}
+                    - { property: 'showBottom', label: 'Show Bottom' }
+                    - { property: 'name', type: 'text' }
+                    - { property: 'alias', type: 'text' }
+                    - { property: 'imageFile', type: 'vich_image'}
+                    - { property: 'description', type: 'textarea', css_class: "ckeditor"}

@@ -17,13 +17,17 @@ framework:
 
 parameters:
     app.path.brand_images: /img/brands
+    app.path.category_images: /img/categories
 
-# ...
+
 
 vich_uploader:
-    # ...
+
     mappings:
         brand_images:
             uri_prefix:         '%app.path.brand_images%'
             upload_destination: '%kernel.root_dir%/../public/img/brands'
+        category_images:
+            uri_prefix:         '%app.path.category_images%'
+            upload_destination: '%kernel.root_dir%/../public/img/categories'
 

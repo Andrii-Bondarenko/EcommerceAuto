@@ -1,0 +1,30 @@
+easy_admin:
+    entities:
+        Model:
+            class: App\Entity\Model
+            controller: App\Controller\CMS\ModelController
+            templates:
+                new: 'easy_admin/Model/new.html.twig'
+                list: 'easy_admin/Model/list.html.twig'
+                edit: 'easy_admin/Model/edit.html.twig'
+            list:
+                fields:
+                    - { property: 'name', type: 'text' }
+                    - { property: 'active', type: 'toggle' }
+                    - { property: 'image', type: 'image', base_path: '/img/brands' }
+            edit:
+                fields:
+                    - { property: 'active', label: 'Active'}
+                    - { property: 'name', type: 'text' }
+                    - { property: 'alias', type: 'text'}
+                    - { property: 'brand'}
+                    - { property: 'imageFile', type: 'vich_image'}
+                    - { property: 'description', type: 'textarea', css_class: "ckeditor"}
+            new:
+                fields:
+                    - { property: 'active',label: 'Active'}
+                    - { property: 'name', type: 'text'}
+                    - { property: 'alias', type: 'text'}
+                    - { property: 'brand'}
+                    - { property: 'imageFile', type: 'vich_image'}
+                    - { property: 'description', type: 'textarea', css_class: "ckeditor"}

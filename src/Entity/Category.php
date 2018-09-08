@@ -11,10 +11,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @UniqueEntity("alias", message="Этот алиас уже сущевствует")
  *
- * @ORM\Entity(repositoryClass="App\Repository\BrandRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
  * @Vich\Uploadable
  */
-class Brand
+class Category
 {
     /**
      * @ORM\Id()
@@ -26,7 +26,12 @@ class Brand
     /**
      * @ORM\Column(type="boolean")
      */
-    private $active= true;
+    private $active = true;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $showBottom = false;
 
     /**
      * @Assert\NotBlank(message="Поле Name не может быть пустым")
@@ -42,6 +47,8 @@ class Brand
     private $name;
 
     /**
+     *
+     *
      * @Assert\Length(
      *      min = 2,
      *      max = 40,
@@ -85,59 +92,8 @@ class Brand
      */
     private $description;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Model", mappedBy="brand")
-     */
-    private $models;
 
-    /**
-     * @return \DateTime
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
 
-    /**
-     * @param \DateTime $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = new \DateTime('now');
-    }
     /**
      * @return mixed
      */
@@ -152,6 +108,22 @@ class Brand
     public function setActive($active)
     {
         $this->active = $active;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**
@@ -203,24 +175,59 @@ class Brand
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
-    public function getModels()
+    public function getUpdatedAt()
     {
-        return $this->models;
+        return $this->updatedAt;
     }
 
     /**
-     * @param mixed $models
+     * @param \DateTime $updatedAt
      */
-    public function setModels($models)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->models = $models;
+        $this->updatedAt = new \DateTime('now');
     }
 
-    public function __toString()
+    /**
+     * @return \DateTime
+     */
+    public function getDescription()
     {
-       return $this->getName();
+        return $this->description;
     }
+
+    /**
+     * @param \DateTime $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShowBottom()
+    {
+        return $this->showBottom;
+    }
+
+    /**
+     * @param mixed $showBottom
+     */
+    public function setShowBottom($showBottom)
+    {
+        $this->showBottom = $showBottom;
+    }
+
+
+
 
 }

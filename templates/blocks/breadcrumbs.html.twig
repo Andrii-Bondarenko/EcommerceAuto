@@ -1,0 +1,24 @@
+{% block breadcrumbs %}
+    <div class="breadcrumbs-block">
+        <div class="container">
+            <div class="breadcrumbs-block__content">
+                <ul class="breadcrumbs-block__list">
+                    <li class="breadcrumbs-block__item">
+                        <a href="/">Каталог</a>
+                    </li>
+                    {% for item in data.breadcrumbs %}
+                        {% if loop.last %}
+                            <li class="breadcrumbs-block__item">
+                                <span>{{ item.name }}</span>
+                            </li>
+                        {% else %}
+                            <li class="breadcrumbs-block__item">
+                                <a href="{{ asset(item.link) }}">{{ item.name }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

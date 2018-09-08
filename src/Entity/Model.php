@@ -9,12 +9,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @UniqueEntity("alias", message="Этот алиас уже сущевствует")
+ * @UniqueEntity({"brand", "name"}, message="This name already exists in this brand!")
+ * @UniqueEntity({"brand", "alias"}, message="This alias already exists in this brand!")
  *
- * @ORM\Entity(repositoryClass="App\Repository\BrandRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ModelRepository")
  * @Vich\Uploadable
  */
-class Brand
+class Model
 {
     /**
      * @ORM\Id()
@@ -27,6 +28,13 @@ class Brand
      * @ORM\Column(type="boolean")
      */
     private $active= true;
+
+    /**
+     * @Assert\NotBlank(message="Brand cannot be null")
+     * @ORM\ManyToOne(targetEntity="Brand", inversedBy="models")
+     * @ORM\JoinColumn(name="brand_id", referencedColumnName="id", nullable=false)
+     */
+    private $brand;
 
     /**
      * @Assert\NotBlank(message="Поле Name не может быть пустым")
@@ -84,11 +92,6 @@ class Brand
      * @var \DateTime
      */
     private $description;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Model", mappedBy="brand")
-     */
-    private $models;
 
     /**
      * @return \DateTime
@@ -205,22 +208,20 @@ class Brand
     /**
      * @return mixed
      */
-    public function getModels()
+    public function getBrand()
     {
-        return $this->models;
+        return $this->brand;
     }
 
     /**
-     * @param mixed $models
+     * @param mixed $brand
      */
-    public function setModels($models)
+    public function setBrand($brand)
     {
-        $this->models = $models;
+        $this->brand = $brand;
     }
 
-    public function __toString()
-    {
-       return $this->getName();
-    }
+
+
 
 }

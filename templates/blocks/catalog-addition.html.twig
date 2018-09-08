@@ -1,32 +1,16 @@
 {% block catalog_addition %}
     <div class="main__second-catalog first-catalog">
         <div class="container">
-            <div class="first-catalog__title">Запчасти для ТО</div>
+            <div class="first-catalog__title">{{  data.catalog_addition.name }}</div>
             <div class="first-catalog__marks" >
-                <div class="first-catalog__item">
-                    <a href="#" class="first-catalog__link">
-                        <img src="img/che-300.jpg" class="first-catalog__img" >
-                        <span class="first-catalog__name">Фильтра</span>
-                    </a>
-                </div>
-                <div class="first-catalog__item">
-                    <a href="#" class="first-catalog__link">
-                        <img src="img/che-300.jpg" class="first-catalog__img" >
-                        <span class="first-catalog__name">Масло</span>
-                    </a>
-                </div>
-                <div class="first-catalog__item">
-                    <a href="#" class="first-catalog__link">
-                        <img src="img/che-300.jpg" class="first-catalog__img" >
-                        <span class="first-catalog__name">Тормозные колодки</span>
-                    </a>
-                </div>
-                <div class="first-catalog__item">
-                    <a href="#" class="first-catalog__link">
-                        <img src="img/che-300.jpg" class="first-catalog__img" >
-                        <span class="first-catalog__name">Автохимия</span>
-                    </a>
-                </div>
+                {% for key,item in data.catalog_addition.items %}
+                    <div class="first-catalog__item">
+                        <a href="#" class="first-catalog__link">
+                            <img src="{{ asset('/img/brands/'~item.image)|imagine_filter('catalog_item_main') }}" class="first-catalog__img" >
+                            <span class="first-catalog__name">{{ item.name }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
