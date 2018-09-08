@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    {% block meta %}
+        <meta charset="UTF-8">
+    {% endblock %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/css/main.min.css') }}">
+    {% endblock %}
+
+</head>
+<body>
+{% block body %}
+    {% block header %}{% endblock header %}
+    <main class="main">
+        {% block main %}{% endblock main %}
+    </main>
+    {% block footer %}{% endblock footer %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/js/libs.min.js') }}"></script>
+    <script src="{{ asset('/js/common.js') }}"></script>
+{% endblock %}
+</body>
+</html>
