@@ -18,6 +18,7 @@ framework:
 parameters:
     app.path.brand_images: /img/brands
     app.path.category_images: /img/categories
+    app.path.product_images: /img/products
 
 
 
@@ -30,4 +31,7 @@ vich_uploader:
         category_images:
             uri_prefix:         '%app.path.category_images%'
             upload_destination: '%kernel.root_dir%/../public/img/categories'
+        product_images:
+            uri_prefix:         '%app.path.product_images%'
+            upload_destination: '%kernel.root_dir%/../public/img/products'
 

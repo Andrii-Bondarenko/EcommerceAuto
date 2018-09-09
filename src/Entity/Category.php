@@ -227,7 +227,10 @@ class Category
         $this->showBottom = $showBottom;
     }
 
-
+    function __toString()
+    {
+        return $this->name;
+    }
 
 
 }

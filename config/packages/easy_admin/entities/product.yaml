@@ -1,0 +1,66 @@
+easy_admin:
+    entities:
+        Product:
+            class: App\Entity\Product
+            list:
+                title: 'Product'
+                fields:
+                    - { property: 'name', label: 'Name' }
+                    - { property: 'insideCode', label: 'Inside code' }
+                    - { property: 'price', label: 'Price' }
+                    - { property: 'priceAction', label: 'price Action' }
+            new:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Main', icon: 'pencil' }
+                    - { property: 'name', label: 'Name' }
+                    - { property: 'active', label: 'Active' }
+                    - { property: 'new', label: 'New' }
+                    - { property: 'alias', label: 'Alias' }
+                    - { property: 'insideCode', label: 'Inside code' }
+
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Price', icon: 'pencil' }
+                    - { property: 'price', label: 'Price'}
+                    - { property: 'priceAction', label: 'Price Action' }
+
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Catalog Setting'}
+                    - { property: 'category', label: 'Category', type_options: {placeholder: '-select-'}}
+                    - { property: 'brand', label: 'Brand', type_options: {placeholder: '-select-'}}
+                    - { property: 'models', label: 'Model',type_options: {placeholder: '-select-'} }
+
+                    - { type: 'group', css_class: 'col-sm-6', label: 'Future', icon: 'pencil' }
+                    - { property: 'code', label: 'Code'}
+                    - { property: 'manufacturer', label: 'Manufacturer' }
+                    - { property: 'counry', label: 'Country' }
+                    - { property: 'garanty', label: 'Garanty' }
+            edit:
+                fields:
+                   - { type: 'group', css_class: 'col-sm-8', label: 'Main', icon: 'pencil' }
+                   - { property: 'name', label: 'Name' }
+                   - { property: 'active', label: 'Active' }
+                   - { property: 'new', label: 'New' }
+                   - { property: 'alias', label: 'Alias' }
+                   - { property: 'insideCode', label: 'Inside Code' }
+
+                   - { type: 'group', css_class: 'col-sm-4', label: 'Price', icon: 'pencil' }
+                   - { property: 'price', label: 'Price'}
+                   - { property: 'priceAction', label: 'price Action' }
+
+                   - { type: 'group', css_class: 'col-sm-6', label: 'Catalog Setting'}
+                   - { property: 'category', label: 'Category', type_options: {placeholder: '-select-'}}
+                   - { property: 'brand', label: 'Brand', type_options: {placeholder: '-select-'}}
+                   - { property: 'models', label: 'Model',type_options: {placeholder: '-select-'} }
+
+                   - { type: 'group', css_class: 'col-sm-6', label: 'Future', icon: 'pencil' }
+                   - { property: 'code', label: 'Code'}
+                   - { property: 'manufacturer', label: 'Manufacturer' }
+                   - { property: 'counry', label: 'Country' }
+                   - { property: 'garanty', label: 'Garanty' }
+
+                   - { type: 'group', css_class: 'col-sm-6', label: 'Image', icon: 'pencil' }
+                   - { property: 'images', label: 'Images', type: 'collection', type_options: {entry_type: 'App\Form\ProductImageEmbeddedForm'} }
+
+
+
+
+
+

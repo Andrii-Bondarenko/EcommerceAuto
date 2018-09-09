@@ -221,7 +221,10 @@ class Model
         $this->brand = $brand;
     }
 
-
+    function __toString()
+    {
+        return $this->name;
+    }
 
 
 }

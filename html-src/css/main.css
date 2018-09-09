@@ -566,6 +566,15 @@ a {
 .icon-bars:before {
   content: "\f0c9"; }
 
+.icon-arrow-left2:before {
+  content: "\ea40"; }
+
+.icon-arrow-right2:before {
+  content: "\ea3c"; }
+
+.icon-arrow-up2:before {
+  content: "\ea3a"; }
+
 .header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
@@ -1041,6 +1050,143 @@ a {
   font-size: 16px;
   padding: 10px 0;
   line-height: 1.67; }
+
+.product-catalog {
+  display: flex;
+  flex-flow: column; }
+  .product-catalog__items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center; }
+  .product-catalog__title {
+    font-size: 24px;
+    text-align: center;
+    padding: 15px 0; }
+  .product-catalog__item {
+    display: flex;
+    flex-flow: column;
+    margin-right: 20px;
+    margin-top: 10px;
+    border: 1px solid #e3e3e3; }
+    .product-catalog__item a {
+      display: flex;
+      flex-flow: column;
+      position: relative; }
+    .product-catalog__item:hover {
+      border: 1px solid #C00002; }
+  .product-catalog__name {
+    color: #4b4b4b;
+    font-weight: 600;
+    line-height: 1.66;
+    font-size: 16px;
+    text-align: center; }
+  .product-catalog__action {
+    position: absolute;
+    top: 10px;
+    display: block;
+    background: #C00002;
+    color: white;
+    font-size: 16px;
+    padding: 3px 3px; }
+  .product-catalog__new {
+    position: absolute;
+    top: 10px;
+    display: block;
+    background: #009A00;
+    color: white;
+    font-size: 16px;
+    padding: 3px 3px; }
+  .product-catalog__img {
+    height: 200px; }
+  .product-catalog__info {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    padding: 10px 10px; }
+  .product-catalog__price {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding-right: 5px; }
+    .product-catalog__price .action {
+      font-weight: 400;
+      font-size: 12px;
+      text-decoration: line-through;
+      text-decoration-color: #C00002;
+      padding-left: 2px; }
+  .product-catalog__price-item {
+    font-weight: 600; }
+  .product-catalog__price-action {
+    font-weight: 600;
+    color: #C00002; }
+  .product-catalog__button {
+    padding: 5px 5px; }
+    .product-catalog__button:hover {
+      background-color: #E03838; }
+  .product-catalog__button-link {
+    color: white; }
+
+.pagination {
+  display: flex;
+  align-content: center;
+  margin-top: 10px;
+  padding: 20px 0;
+  justify-content: center; }
+  .pagination .pagination-main {
+    display: flex; }
+    .pagination .pagination-main .pagination__item {
+      display: flex;
+      width: 50px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      border: 1px solid #4b4b4b; }
+      .pagination .pagination-main .pagination__item:hover {
+        border: 1px solid #C00002; }
+    .pagination .pagination-main .prev:before {
+      height: 14px;
+      font-size: 16px;
+      display: block;
+      color: #4b4b4b;
+      content: "\ea40";
+      font-family: icomoon !important; }
+    .pagination .pagination-main .prev:hover:before {
+      color: #C00002; }
+    .pagination .pagination-main .next:before {
+      height: 14px;
+      font-size: 16px;
+      display: block;
+      color: #4b4b4b;
+      content: "\ea3c";
+      font-family: icomoon !important; }
+    .pagination .pagination-main .next:hover:before {
+      color: #C00002; }
+    .pagination .pagination-main__item {
+      margin-right: 10px;
+      border: 1px solid #4b4b4b;
+      padding: 10px 10px; }
+      .pagination .pagination-main__item:hover {
+        border: 1px solid #C00002; }
+        .pagination .pagination-main__item:hover .pagination-main__link {
+          color: #C00002; }
+      @media only screen and (max-width: 479px) {
+        .pagination .pagination-main__item {
+          display: none; } }
+    .pagination .pagination-main__link {
+      color: #4b4b4b;
+      display: block; }
+    .pagination .pagination-main__item--active {
+      border: 1px solid #C00002; }
+      .pagination .pagination-main__item--active .pagination-main__link {
+        color: #C00002;
+        display: block; }
+    .pagination .pagination-main__item--inside {
+      border: none; }
+      .pagination .pagination-main__item--inside:hover {
+        border: none; }
 
 .product-block__content {
   display: flex;

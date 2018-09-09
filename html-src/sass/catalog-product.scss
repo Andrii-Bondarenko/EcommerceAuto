@@ -1,0 +1,195 @@
+@import "vars";
+
+.product-catalog {
+    display: flex;
+    flex-flow: column;
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+  &__title {
+    font-size: $big-font-size;
+    text-align: center;
+    padding: 15px 0;
+  }
+  &__item {
+    display: flex;
+    flex-flow: column;
+    margin-right: 20px;
+    margin-top: 10px;
+    border: 1px solid $header-top;
+      a {
+        display: flex;
+        flex-flow: column;
+        position: relative;
+      }
+    &:hover {
+        border: 1px solid $mainRed;
+    }
+
+  }
+  &__name {
+    color: $header-top-font;
+    font-weight: 600;
+    line-height: 1.66;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  &__action {
+    position: absolute;
+    top: 10px;
+    display: block;
+    background: $mainRed;
+    color: white;
+    font-size: $little-font-size;
+    padding: 3px 3px;
+  }
+
+  &__new {
+    position: absolute;
+    top: 10px;
+    display: block;
+    background: $green;
+    color: white;
+    font-size: $little-font-size;
+    padding: 3px 3px;
+  }
+  &__img {
+    height: 200px;
+  }
+
+  &__info {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    padding: 10px 10px;
+  }
+
+  &__price {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    padding-right: 5px;
+    .action {
+      font-weight: 400;
+      font-size: 12px;
+      text-decoration: line-through;
+      text-decoration-color: $mainRed;
+      padding-left: 2px;
+    }
+  }
+
+  &__price-item {
+    font-weight: 600;
+  }
+
+  &__price-action {
+    font-weight: 600;
+    color: $mainRed;
+  }
+  &__button {
+    padding: 5px 5px;
+    &:hover {
+      background-color: $mainRedHover;
+    }
+   }
+  &__button-link {
+    color: white;
+
+  }
+}
+
+.pagination {
+  display: flex;
+  align-content: center;
+  margin-top: 10px;
+  padding: 20px 0;
+  justify-content: center;
+  .pagination-main {
+    display: flex;
+
+    .pagination__item {
+      display: flex;
+      width: 50px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      border: 1px solid $header-top-font;
+      &:hover {
+        border: 1px solid $mainRed;
+      }
+    }
+
+    .prev {
+      &:before {
+        height: 14px;
+        font-size: $little-font-size;
+        display: block;
+        color:$header-top-font;
+        content: "\ea40";
+        font-family: icomoon !important;
+      }
+      &:hover {
+        &:before {
+          color:$mainRed;
+        }
+      }
+    }
+
+    .next {
+      &:before {
+        height: 14px;
+        font-size: $little-font-size;
+        display: block;
+        color:$header-top-font;
+        content: "\ea3c";
+        font-family: icomoon !important;
+      }
+      &:hover {
+        &:before {
+          color:$mainRed;
+        }
+      }
+    }
+
+    &__item {
+      margin-right: 10px;
+      border: 1px solid $header-top-font;
+      padding: 10px 10px;
+      &:hover {
+        border: 1px solid $mainRed;
+        .pagination-main__link {
+          color: $mainRed;
+        }
+      }
+
+      @include mq('phone-small', max) {
+        display: none;
+      }
+    }
+    &__link {
+      color: $header-top-font;
+      display: block;
+    }
+    &__item--active {
+      border: 1px solid $mainRed;
+      .pagination-main__link {
+        color: $mainRed;
+        display: block;
+      }
+    }
+    &__item--inside {
+      border: none;
+      &:hover {
+        border: none;
+      }
+    }
+  }
+}
