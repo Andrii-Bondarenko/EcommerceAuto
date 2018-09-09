@@ -5,6 +5,9 @@ composer.phar
 ###> symfony/framework-bundle ###
 /.env
 /public/bundles/
+/public/img/products/
+/public/img/brands/
+/public/img/thumbs/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
