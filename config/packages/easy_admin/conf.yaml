@@ -8,3 +8,4 @@ easy_admin:
             - Category
             - Brand
             - Product
+            - { entity: 'Product',label: 'Import', params: { action: 'import' } }

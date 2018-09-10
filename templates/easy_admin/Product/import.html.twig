@@ -1,0 +1,52 @@
+{% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
+{% extends _entity_config.templates.layout %}
+
+{% block content_title %}
+
+{% endblock %}
+
+{% block main %}
+    <style>
+        .submit_input {
+            background-color: #c00002;
+            color: white;
+            padding: 5px 15px;
+            font-size: 16px;
+            border: none;
+            margin-top: 10px;
+        }
+    </style>
+    <h1>Import</h1>
+    <form action="" class="form_import">
+        <input type="file" name="file" class="file_input">
+        <input type="submit" value="Import" class="submit_input">
+    </form>
+{% endblock %}
+
+{% block body_javascript %}
+    {{ parent() }}
+
+    <script>
+        $('.submit_input').click(function (e) {
+            e.preventDefault();
+
+            var formData = new FormData($('.form_import')[0]);
+            let url = '/cms/Product/import';
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", url);
+            xhr.onreadystatechange = function () {
+
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        alert(xhr.responseText);
+                    }
+                    if (xhr.status == 500) {
+                        alert(xhr.responseText);
+
+                    }
+                }
+            }
+            xhr.send(formData);
+        });
+    </script>
+{% endblock %}

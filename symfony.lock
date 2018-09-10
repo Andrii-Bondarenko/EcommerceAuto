@@ -101,6 +101,9 @@
     "jms/metadata": {
         "version": "1.6.0"
     },
+    "league/csv": {
+        "version": "9.1.4"
+    },
     "liip/imagine-bundle": {
         "version": "1.8",
         "recipe": {

@@ -2,6 +2,7 @@ easy_admin:
     entities:
         Product:
             class: App\Entity\Product
+            controller: App\Controller\CMS\ProductController
             list:
                 title: 'Product'
                 fields:
