@@ -60,7 +60,7 @@ class ProductController extends EasyAdminController
                 ->getRepository(Category::class)->findOneBy(['name'=>$item['category']]);
 
             if(empty($category)) {
-                return new Response('Категории "'.$item['category'].'" не сущевствует!',500);
+                return new Response('Категории "'.$item['category'].'" не сущевствует! '.$item['inside_code'],500);
             }
             $brand ='';
             if(!empty($item['brand'])) {
@@ -78,7 +78,7 @@ class ProductController extends EasyAdminController
                     $model  = $this->getDoctrine()
                         ->getRepository(Model::class)->findOneBy(['name'=>$modelItem]);
                     if(empty($model)) {
-                        return new Response('Модели "'.$item['brand'].'" не сущевствует!',500);
+                        return new Response('Модели "'.$item['models'].'" не сущевствует! '.$item['inside_code'],500);
                     }
                     $allModels->add($model);
                 }
