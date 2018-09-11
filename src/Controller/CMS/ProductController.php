@@ -6,6 +6,7 @@ use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Model;
 use App\Entity\Product;
+use App\Entity\ProductImage;
 use App\Utils\ExportImportCSV;
 use Doctrine\Common\Persistence\ObjectManager;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
@@ -16,6 +17,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\EasyAdminEvents;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Base class, extends Easy Admin.
@@ -178,6 +180,27 @@ class ProductController extends EasyAdminController
 
         }
         $manager->flush();
+        foreach ($dataProducts as $item) {
+            $productObj = $this->getDoctrine()
+                ->getRepository(Product::class)->findOneBy(['insideCode'=>$item['inside_code']]);
+            $imagesNames = explode(',',$item['inside_code']);
+            foreach ($imagesNames as $name) {
+                $format  = substr(trim($name),-3, 1);
+                if($format!='jpg' || $format!='png') {
+                    return new Response('Не верный формат картиник для "'.$item['inside_code'].'"',500);
+                }
+                if(empty($productObj)) {
+                    return new Response('Ошибка продукта "'.$item['inside_code'].'"',500);
+                }
+                $image = new ProductImage();
+                $image->setProduct($productObj);
+                $image->setImage(trim($name));
+                $image->setUpdatedAt(new \DateTime('now'));
+                $manager->persist($image);
+            }
+        }
+        $manager->flush();
+
         return new Response('Успех',200);
     }
 
