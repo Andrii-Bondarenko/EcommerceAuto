@@ -78,7 +78,7 @@ class ProductController extends EasyAdminController
                     $model  = $this->getDoctrine()
                         ->getRepository(Model::class)->findOneBy(['name'=>$modelItem]);
                     if(empty($model)) {
-                        return new Response('Модели "'.$item['models'].'" не сущевствует! '.$item['inside_code'],500);
+                        return new Response('Модели "'.$modelItem.'" не сущевствует! '.$item['inside_code'],500);
                     }
                     $allModels->add($model);
                 }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="762ba3c9-c94f-4d9d-9b3b-2f633c2cf979" name="Default" comment="htac">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CMS/ProductController.php" afterPath="$PROJECT_DIR$/src/Controller/CMS/ProductController.php" />
-    </list>
+    <list default="true" id="762ba3c9-c94f-4d9d-9b3b-2f633c2cf979" name="Default" comment="htac" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +57,8 @@
       <file leaf-file-name="ProductController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/CMS/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="80" column="103" lean-forward="false" selection-start-line="80" selection-start-column="103" selection-end-line="80" selection-end-column="103" />
+            <state relative-caret-position="227">
+              <caret line="82" column="37" lean-forward="false" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
               <folding>
                 <element signature="e#38#59#0#PHP" expanded="true" />
               </folding>
@@ -471,7 +469,7 @@
       <workItem from="1536406143572" duration="34396000" />
       <workItem from="1536496047993" duration="29999000" />
       <workItem from="1536607598592" duration="20000" />
-      <workItem from="1536702706508" duration="1302000" />
+      <workItem from="1536702706508" duration="1409000" />
     </task>
     <task id="LOCAL-00001" summary="header, first page">
       <created>1533472825565</created>
@@ -491,7 +489,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183789000" />
+    <option name="totallyTimeSpent" value="183896000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -942,8 +940,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CMS/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="80" column="103" lean-forward="false" selection-start-line="80" selection-start-column="103" selection-end-line="80" selection-end-column="103" />
+        <state relative-caret-position="227">
+          <caret line="82" column="37" lean-forward="false" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
           <folding>
             <element signature="e#38#59#0#PHP" expanded="true" />
           </folding>
