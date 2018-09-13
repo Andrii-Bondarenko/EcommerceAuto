@@ -88,10 +88,13 @@ class ProductController extends EasyAdminController
                 return new Response('Не указана цена для "'.$item['inside_code'].'"',500);
             }
 
+            $item['price'] = (float)str_replace(',', '.', $item['price']);
             if(!is_numeric($item['price'])) {
                 return new Response('Не верно указана цена для "'.$item['inside_code'].'"',500);
             }
-            if(!empty($item['price_action']) && !is_numeric($item['price'])) {
+
+            $item['price_action'] = (float)str_replace(',', '.', $item['price_action']);
+            if(!empty($item['price_action']) && !is_numeric($item['price_action'])) {
                 return new Response('Не верно указана акционная цена для "'.$item['inside_code'].'"',500);
             }
             if(empty($item['name'])) {
