@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
@@ -156,7 +157,7 @@ class Product
 
 
     public function __construct() {
-        $this->models = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->models = new ArrayCollection();
     }
 
     public function getId()
@@ -244,12 +245,12 @@ class Product
         return $this->models;
     }
 
-    /**
-     * @param mixed $models
-     */
-    public function setModels($models)
+    public function addModel(Model $model)
     {
-        $this->models = $models;
+        if (!$this->models->contains($model)) {
+            $this->models[] = $model;
+        }
+        return $this;
     }
 
     /**

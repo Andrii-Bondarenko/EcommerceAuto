@@ -8,6 +8,7 @@ use App\Entity\Model;
 use App\Entity\Product;
 use App\Entity\ProductImage;
 use App\Utils\ExportImportCSV;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -71,7 +72,7 @@ class ProductController extends EasyAdminController
                 }
             }
 
-            $allModels = new \Doctrine\Common\Collections\ArrayCollection();
+            $allModels = [];
             if(!empty($item['models'])) {
                 $models = explode(',',$item['models']);
                 foreach ($models  as $modelItem) {
@@ -80,7 +81,7 @@ class ProductController extends EasyAdminController
                     if(empty($model)) {
                         return new Response('Модели "'.$modelItem.'" не сущевствует! '.$item['inside_code'],500);
                     }
-                    $allModels->add($model);
+                    $allModels[] = $model;
                 }
             }
 
@@ -108,7 +109,9 @@ class ProductController extends EasyAdminController
                     $product->setBrand($brand);
                 }
                 if (!empty($allModels)) {
-                    $product->setModels($allModels);
+                    foreach ($allModels as $itemMod) {
+                        $product->addModel($itemMod);
+                    }
                 }
                 $product->setPrice(ceil($item['price']));
                 $product->setPriceAction(ceil($item['price_action']));
@@ -144,12 +147,17 @@ class ProductController extends EasyAdminController
                 $product->setInsideCode($item['inside_code']);
                 $product->setName($item['name']);
                 $product->setCategory($category);
+
                 if (!empty($brand)) {
                     $product->setBrand($brand);
                 }
+
                 if (!empty($allModels)) {
-                    $product->setModels($allModels);
+                    foreach ($allModels as $itemMod) {
+                        $product->addModel($itemMod);
+                    }
                 }
+
                 $product->setPrice(ceil($item['price']));
                 $product->setPriceAction(ceil($item['price_action']));
                 if(empty($item['new']) || $item['new']==0){
