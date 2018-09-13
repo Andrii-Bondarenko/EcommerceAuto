@@ -35,7 +35,6 @@ class ExportImportCSV
             $itemArr = [];
             if($num === 0) {
                 $header = $row;
-                var_dump( $header);
             } else {
                 foreach ($row as $key=>$value) {
                     $itemArr[trim($header[$key])] = trim($value);
