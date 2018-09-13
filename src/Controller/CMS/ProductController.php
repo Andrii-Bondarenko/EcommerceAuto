@@ -54,10 +54,10 @@ class ProductController extends EasyAdminController
         foreach ($dataProducts as $item) {
             /** @var Product $product*/
             $product = $this->getDoctrine()
-                ->getRepository(Product::class)->findOneBy(['insideCode'=>$item['inside_code']]);
+                ->getRepository(Product::class)->findOneBy(['insideCode'=>trim($item['inside_code'])]);
 
             $category = $this->getDoctrine()
-                ->getRepository(Category::class)->findOneBy(['name'=>$item['category']]);
+                ->getRepository(Category::class)->findOneBy(['name'=>trim($item['category'])]);
 
             if(empty($category)) {
                 return new Response('Категории "'.$item['category'].'" не сущевствует! '.$item['inside_code'],500);
@@ -65,7 +65,7 @@ class ProductController extends EasyAdminController
             $brand ='';
             if(!empty($item['brand'])) {
                 $brand  = $this->getDoctrine()
-                    ->getRepository(Brand::class)->findOneBy(['name'=>$item['brand']]);
+                    ->getRepository(Brand::class)->findOneBy(['name'=>trim($item['brand'])]);
                 if(empty($brand)) {
                     return new Response('Бренда "'.$item['brand'].'" не сущевствует!',500);
                 }
@@ -76,7 +76,7 @@ class ProductController extends EasyAdminController
                 $models = explode(',',$item['models']);
                 foreach ($models  as $modelItem) {
                     $model  = $this->getDoctrine()
-                        ->getRepository(Model::class)->findOneBy(['name'=>$modelItem]);
+                        ->getRepository(Model::class)->findOneBy(['name'=>trim($modelItem)]);
                     if(empty($model)) {
                         return new Response('Модели "'.$modelItem.'" не сущевствует! '.$item['inside_code'],500);
                     }
@@ -88,10 +88,13 @@ class ProductController extends EasyAdminController
                 return new Response('Не указана цена для "'.$item['inside_code'].'"',500);
             }
 
+            $item['price'] = (float)str_replace(',', '.', $item['price']);
             if(!is_numeric($item['price'])) {
                 return new Response('Не верно указана цена для "'.$item['inside_code'].'"',500);
             }
-            if(!empty($item['price_action']) && !is_numeric($item['price'])) {
+
+            $item['price_action'] = (float)str_replace(',', '.', $item['price_action']);
+            if(!empty($item['price_action']) && !is_numeric($item['price_action'])) {
                 return new Response('Не верно указана акционная цена для "'.$item['inside_code'].'"',500);
             }
             if(empty($item['name'])) {

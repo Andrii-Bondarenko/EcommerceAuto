@@ -2,7 +2,7 @@ composer.bat
 composer.phar
 /node_modules
 
-###> symfony/framework-bundle ###
+###> symfony/framework-bundle ###gi
 /.idea/workspace.xml
 /.env
 /public/bundles/
