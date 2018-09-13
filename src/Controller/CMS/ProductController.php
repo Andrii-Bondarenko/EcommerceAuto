@@ -60,7 +60,7 @@ class ProductController extends EasyAdminController
                 ->getRepository(Category::class)->findOneBy(['name'=>trim($item['category'])]);
 
             if(empty($category)) {
-                return new Response('Категории "'.$item['category'].'" не сущевствует!',500);
+                return new Response('Категории "'.$item['category'].'" не сущевствует! '.$item['inside_code'],500);
             }
             $brand ='';
             if(!empty($item['brand'])) {
@@ -78,7 +78,7 @@ class ProductController extends EasyAdminController
                     $model  = $this->getDoctrine()
                         ->getRepository(Model::class)->findOneBy(['name'=>trim($modelItem)]);
                     if(empty($model)) {
-                        return new Response('Модели "'.$item['brand'].'" не сущевствует!',500);
+                        return new Response('Модели "'.$modelItem.'" не сущевствует! '.$item['inside_code'],500);
                     }
                     $allModels->add($model);
                 }
@@ -181,22 +181,32 @@ class ProductController extends EasyAdminController
         }
         $manager->flush();
         foreach ($dataProducts as $item) {
+            /** @var Product $productObj*/
             $productObj = $this->getDoctrine()
                 ->getRepository(Product::class)->findOneBy(['insideCode'=>$item['inside_code']]);
-            $imagesNames = explode(',',$item['inside_code']);
-            foreach ($imagesNames as $name) {
-                $format  = substr(trim($name),-3, 1);
-                if($format!='jpg' || $format!='png') {
-                    return new Response('Не верный формат картиник для "'.$item['inside_code'].'"',500);
+
+            $oldImages = $productObj->getImages();
+            if(!empty($oldImages)) {
+                foreach ($oldImages as $oldImage) {
+                    $manager->remove($oldImage);
                 }
-                if(empty($productObj)) {
-                    return new Response('Ошибка продукта "'.$item['inside_code'].'"',500);
+            }
+            if(!empty($item['image'])) {
+                $imagesNames = explode(',', $item['image']);
+                foreach ($imagesNames as $name) {
+                    $format = substr(trim($name), -3, 1);
+                    if ($format != 'jpg' || $format != 'png') {
+                        return new Response('Не верный формат картиник для "' . $item['inside_code'] . '"', 500);
+                    }
+                    if (empty($productObj)) {
+                        return new Response('Ошибка продукта "' . $item['inside_code'] . '"', 500);
+                    }
+                    $image = new ProductImage();
+                    $image->setProduct($productObj);
+                    $image->setImage(trim($name));
+                    $image->setUpdatedAt(new \DateTime('now'));
+                    $manager->persist($image);
                 }
-                $image = new ProductImage();
-                $image->setProduct($productObj);
-                $image->setImage(trim($name));
-                $image->setUpdatedAt(new \DateTime('now'));
-                $manager->persist($image);
             }
         }
         $manager->flush();

@@ -3,6 +3,7 @@ composer.phar
 /node_modules
 
 ###> symfony/framework-bundle ###
+/.idea/workspace.xml
 /.env
 /public/bundles/
 /public/img/products/
