@@ -206,6 +206,7 @@ class ProductController extends EasyAdminController
                 $imagesNames = explode(',', $item['image']);
                 foreach ($imagesNames as $name) {
                     $format = substr(trim($name), -3, 1);
+                    var_dump($format);
                     if ($format != 'jpg' || $format != 'png' || $format != 'JPG' || $format != 'PNG') {
                         return new Response('Не верный формат картиник для "' . $item['inside_code'] . '"', 500);
                     }
