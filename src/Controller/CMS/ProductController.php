@@ -206,7 +206,7 @@ class ProductController extends EasyAdminController
                 $imagesNames = explode(',', $item['image']);
                 foreach ($imagesNames as $name) {
                     $format = substr(trim($name), -3, 1);
-                    if ($format != 'jpg' || $format != 'png') {
+                    if ($format != 'jpg' || $format != 'png' || $format != 'JPG' || $format != 'PNG') {
                         return new Response('Не верный формат картиник для "' . $item['inside_code'] . '"', 500);
                     }
                     if (empty($productObj)) {
@@ -217,12 +217,10 @@ class ProductController extends EasyAdminController
                     $image->setImage(trim($name));
                     $image->setUpdatedAt(new \DateTime('now'));
                     $manager->persist($image);
-                    $manager->flush();
                 }
             }
         }
         $manager->flush();
-
         return new Response('Успех',200);
     }
 
