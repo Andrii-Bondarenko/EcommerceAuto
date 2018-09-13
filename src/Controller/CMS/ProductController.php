@@ -54,10 +54,10 @@ class ProductController extends EasyAdminController
         foreach ($dataProducts as $item) {
             /** @var Product $product*/
             $product = $this->getDoctrine()
-                ->getRepository(Product::class)->findOneBy(['insideCode'=>$item['inside_code']]);
+                ->getRepository(Product::class)->findOneBy(['insideCode'=>trim($item['inside_code'])]);
 
             $category = $this->getDoctrine()
-                ->getRepository(Category::class)->findOneBy(['name'=>$item['category']]);
+                ->getRepository(Category::class)->findOneBy(['name'=>trim($item['category'])]);
 
             if(empty($category)) {
                 return new Response('Категории "'.$item['category'].'" не сущевствует!',500);
@@ -65,7 +65,7 @@ class ProductController extends EasyAdminController
             $brand ='';
             if(!empty($item['brand'])) {
                 $brand  = $this->getDoctrine()
-                    ->getRepository(Brand::class)->findOneBy(['name'=>$item['brand']]);
+                    ->getRepository(Brand::class)->findOneBy(['name'=>trim($item['brand'])]);
                 if(empty($brand)) {
                     return new Response('Бренда "'.$item['brand'].'" не сущевствует!',500);
                 }
@@ -76,7 +76,7 @@ class ProductController extends EasyAdminController
                 $models = explode(',',$item['models']);
                 foreach ($models  as $modelItem) {
                     $model  = $this->getDoctrine()
-                        ->getRepository(Model::class)->findOneBy(['name'=>$modelItem]);
+                        ->getRepository(Model::class)->findOneBy(['name'=>trim($modelItem)]);
                     if(empty($model)) {
                         return new Response('Модели "'.$item['brand'].'" не сущевствует!',500);
                     }
