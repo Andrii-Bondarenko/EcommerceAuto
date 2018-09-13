@@ -209,6 +209,7 @@ class ProductController extends EasyAdminController
                     $image->setImage(trim($name));
                     $image->setUpdatedAt(new \DateTime('now'));
                     $manager->persist($image);
+                    $manager->flush();
                 }
             }
         }
