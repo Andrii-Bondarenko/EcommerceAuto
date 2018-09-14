@@ -76,9 +76,11 @@ class ProductController extends EasyAdminController
             if(!empty($item['models'])) {
                 $models = explode(',',$item['models']);
                 foreach ($models  as $modelItem) {
-                    $model  = $this->getDoctrine()
+
+                    $model = $this->getDoctrine()
                         ->getRepository(Model::class)->findOneBy(['name'=>trim($modelItem)]);
                     if(empty($model)) {
+                        var_dump(trim($modelItem));
                         return new Response('Модели "'.$modelItem.'" не сущевствует! '.$item['inside_code'],500);
                     }
                     $allModels[] = $model;
