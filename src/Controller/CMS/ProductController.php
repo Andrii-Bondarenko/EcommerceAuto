@@ -196,6 +196,7 @@ class ProductController extends EasyAdminController
                 $product->setFuture($item['future']);
             }
             $manager->persist($product);
+            $manager->flush();
 
         }
         $manager->flush();
