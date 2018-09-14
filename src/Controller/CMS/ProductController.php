@@ -134,16 +134,8 @@ class ProductController extends EasyAdminController
                 }else{
                     $product->setActive(true);
                 }
+                $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,35)).'-'.$item['inside_code']);
 
-                $productAlias = $this->getDoctrine()
-                    ->getRepository(Product::class)
-                    ->findOneBy(['alias'=>mb_strtolower(substr($this->translit($item['name']),0,40))]);
-
-                if (empty($productAlias)) {
-                    $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,40)));
-                } else {
-                    $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,35)).'-'.$item['inside_code']);
-                }
                 $product->setDescription($item['garanty']);
                 $product->setCounry($item['country']);
                 $product->setManufacturer($item['manufacturer']);
@@ -180,15 +172,9 @@ class ProductController extends EasyAdminController
                     $product->setActive(true);
                 }
 
-                $productAlias = $this->getDoctrine()
-                    ->getRepository(Product::class)
-                    ->findOneBy(['alias'=>mb_strtolower(substr($this->translit($item['name']),0,40))]);
 
-                if (empty($productAlias)) {
-                    $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,40)));
-                } else {
-                    $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,35)).'-'.$item['inside_code']);
-                }
+
+                $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,35)).'-'.$item['inside_code']);
                 $product->setDescription($item['garanty']);
                 $product->setCounry($item['country']);
                 $product->setManufacturer($item['manufacturer']);
