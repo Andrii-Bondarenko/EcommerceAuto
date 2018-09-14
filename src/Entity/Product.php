@@ -253,6 +253,14 @@ class Product
         return $this;
     }
 
+    public function removeModel(Model $model)
+    {
+        if ($this->models->contains($model)) {
+            $this->models->removeElement($model) ;
+        }
+        return $this;
+    }
+
     /**
      * @return mixed
      */
