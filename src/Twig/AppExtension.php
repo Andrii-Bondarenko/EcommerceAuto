@@ -71,17 +71,20 @@ class AppExtension extends \Twig_Extension
 
     }
 
-    public function getImageForProductCatalog($product)
+    public function getImageForProductCatalog($images)
     {
-        $images = $product->getImages();
-
+        $current = null;
         if(!empty($images)) {
             foreach ($images as $image) {
-                return '/img/products/'.$image->getImage();
+                $current = $image->getImage();
+                break;
             }
-        } else {
-            return '/img/products/no_image.jpg';
         }
+        if(empty($current)) {
+            $current = 'no_image.jpg';
+        }
+
+        return '/img/products/'.$current;
     }
 
     public function getCropString($string, $length)
