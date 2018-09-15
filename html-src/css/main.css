@@ -1082,8 +1082,11 @@ a {
     line-height: 1.66;
     font-size: 16px;
     text-align: center;
-    max-width: 250px;
-    height: 72px; }
+    width: 250px;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .product-catalog__action {
     position: absolute;
     top: 10px;
