@@ -13,7 +13,7 @@
                                 <div class="product-catalog__new">Новинка</div>
                             {% endif %}
                         {% endif %}
-                        <img src="{{ asset(getImageForProductCatalog(item.images))|imagine_filter('catalog_product') }}" class="product-catalog__img" >
+                        <img alt="{{ getCropString(item.name,65) }}" src="{{ asset(getImageForProductCatalog(item.images))|imagine_filter('catalog_product') }}" class="product-catalog__img" >
                         <span class="product-catalog__name">{{ getCropString(item.name,65) }}</span>
                     </a>
                     <div class="product-catalog__info">

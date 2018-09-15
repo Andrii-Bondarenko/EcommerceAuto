@@ -45,3 +45,4 @@ liip_imagine :
                 # list of transformations to apply (the "filters")
           filters :
               thumbnail  : { size : [200, 250], mode : outbound }
+              background: { size: [200, 250], position: center, color: '#FFFFFF' }
