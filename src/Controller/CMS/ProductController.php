@@ -81,7 +81,6 @@ class ProductController extends EasyAdminController
                     $model = $this->getDoctrine()
                         ->getRepository(Model::class)->findOneBy(['name'=>$modelItem]);
                     if(empty($model)) {
-                        var_dump(trim($modelItem));
                         return new Response('Модели "'.$modelItem.'" не сущевствует! '.$item['inside_code'],500);
                     }
                     $allModels[] = $model;
@@ -121,6 +120,7 @@ class ProductController extends EasyAdminController
                         $product->addModel($itemMod);
                     }
                 }
+                $product->setGaranty($item['garanty']);
                 $product->setPrice(ceil($item['price']));
                 $product->setPriceAction(ceil($item['price_action']));
                 if(empty($item['new']) || $item['new']==0){
@@ -134,7 +134,7 @@ class ProductController extends EasyAdminController
                 }else{
                     $product->setActive(true);
                 }
-                $product->setDescription($item['garanty']);
+                $product->setDescription($item['description']);
                 $product->setCounry($item['country']);
                 $product->setManufacturer($item['manufacturer']);
                 $product->setCode($item['code']);
@@ -155,7 +155,7 @@ class ProductController extends EasyAdminController
                         $product->addModel($itemMod);
                     }
                 }
-
+                $product->setGaranty($item['garanty']);
                 $product->setPrice(ceil($item['price']));
                 $product->setPriceAction(ceil($item['price_action']));
                 if(empty($item['new']) || $item['new']==0){

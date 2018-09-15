@@ -42,6 +42,9 @@
   &__presence {
     font-size: $big-font-size;
     color:$green;
+    .not {
+      color: $header-top;
+    }
   }
   &__buttons {
     padding: 15px 0;

@@ -1233,6 +1233,8 @@ a {
   .product-info__presence {
     font-size: 24px;
     color: #009A00; }
+    .product-info__presence .not {
+      color: #e3e3e3; }
   .product-info__buttons {
     padding: 15px 0; }
 

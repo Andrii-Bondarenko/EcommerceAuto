@@ -5,7 +5,7 @@
             <div class="product-catalog__items" >
             {% for item in data.pager.currentPageResults %}
                 <div class="product-catalog__item">
-                    <a href="#" class="product-catalog__link">
+                    <a href="{{ path('product',{'alias':item.alias}) }}" class="product-catalog__link">
                         {% if item.priceAction is not empty and item.priceAction !=0 %}
                             <div class="product-catalog__action">Акция</div>
                         {% else %}
@@ -18,7 +18,7 @@
                     </a>
                     <div class="product-catalog__info">
                         <div class="product-catalog__button red">
-                            <a href="" class="product-catalog__button-link">К товару</a>
+                            <a href="{{ path('product',{'alias':item.alias}) }}" class="product-catalog__button-link">К товару</a>
                         </div>
                         <div class="product-catalog__price">
                             {% if item.priceAction is not empty and item.priceAction !=0%}

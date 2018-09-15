@@ -1,0 +1,46 @@
+{% block product_future %}
+    <div class="product-addition grey">
+        <div class="container">
+            <div class="product-addition__feature feature">
+                <div class="feature__title title"> <i class="icon-settings"></i>Характеристики</div>
+                <div class="feature__main">
+                    <div class="feature__first-block">
+                        {% if data.product.counry is not empty %}
+                            <div class="feature__item">
+                                <div class="feature__name">Страна:</div>
+                                <div class="feature__value">{{ data.product.counry }}</div>
+                            </div>
+                        {% endif %}
+                        {% if data.product.garanty is not empty %}
+                            <div class="feature__item">
+                                <div class="feature__name">Гарантия:</div>
+                                <div class="feature__value">{{ data.product.garanty }}</div>
+                            </div>
+                        {% else %}
+                            <div class="feature__item">
+                                <div class="feature__name">Гарантия:</div>
+                                <div class="feature__value">3 мес.</div>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                    <div class="feature__second-block">
+                        {% if data.product.manufacturer is not empty %}
+                            <div class="feature__item">
+                                <div class="feature__name">Производитель:</div>
+                                <div class="feature__value">{{ data.product.manufacturer }}</div>
+                            </div>
+                        {% endif %}
+                        {% if data.product.code is not empty %}
+                            <div class="feature__item">
+                                <div class="feature__name">Заводской номер:</div>
+                                <div class="feature__value">{{ data.product.code }}</div>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

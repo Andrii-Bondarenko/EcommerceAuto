@@ -103,7 +103,7 @@ class CatalogController extends Controller
     /**
      * @Route("/brand/{alias}/{model}/{category}/{page}", name="catalog-product",  requirements={"page": "\d+"}, defaults={"page": 1})
      */
-    public function catalogProduct($alias, $model, $category,$page)
+    public function catalogProduct($alias, $model, $category,$page,SessionInterface $session)
     {
         $brand = $this->getDoctrine()
             ->getRepository(Brand::class)->findOneBy(['alias'=>$alias]);
@@ -112,6 +112,7 @@ class CatalogController extends Controller
         $model = $this->getDoctrine()
             ->getRepository(Model::class)->findOneBy(['alias'=>$model]);
         if (empty($model) || $model->getBrand()!==$brand) { throw new Exception('Product don\'t exist',404 );}
+        $session->set('model',$model);
 
         $category = $this->getDoctrine()
             ->getRepository(Category::class)->findOneBy(['alias'=>$category]);
@@ -124,22 +125,7 @@ class CatalogController extends Controller
 
 
         $data['pager'] = $this->getPagerCatalogProduct($brand, $model, $category,$page);
-
-        $brandItem['name'] = $brand->getName();
-        $brandItem['link'] = $this->generateUrl('catalog-brand', array('alias' => $brand->getAlias()));
-
-        $modelItem['name'] = $model->getName();
-        $modelItem['link'] = $this->generateUrl('catalog-model',
-            array(
-                'alias' => $brand->getAlias(),
-                'model'=>$model->getAlias())
-            );
-
-        $data['breadcrumbs'][] = $brandItem;
-        $data['breadcrumbs'][] = $modelItem;
-
-        $currentItem['name'] = $category->getName();
-        $data['breadcrumbs'][] = $currentItem;
+        $data['breadcrumbs'] = $this->getBreadcrumbsCatalogProduct($brand,$model,$category);
 
         return $this->render('pages/catalog/items.html.twig', ['data'=>$data]);
     }
@@ -160,6 +146,26 @@ class CatalogController extends Controller
         $pagerfanta->setCurrentPage($page);
 
         return $pagerfanta;
+    }
+
+    private function getBreadcrumbsCatalogProduct($brand,$model,$category)
+    {
+        $breadcrumbs = [];
+        $brandItem['name'] = $brand->getName();
+        $brandItem['link'] = $this->generateUrl('catalog-brand', array('alias' => $brand->getAlias()));
+
+        $modelItem['name'] = $model->getName();
+        $modelItem['link'] = $this->generateUrl('catalog-model',
+            array(
+                'alias' => $brand->getAlias(),
+                'model'=>$model->getAlias())
+        );
+        $breadcrumbs[] = $brandItem;
+        $breadcrumbs[] = $modelItem;
+
+        $currentItem['name'] = $category->getName();
+        $breadcrumbs[] = $currentItem;
+        return $breadcrumbs;
     }
 
 }

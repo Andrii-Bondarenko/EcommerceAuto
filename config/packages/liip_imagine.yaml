@@ -25,24 +25,28 @@ liip_imagine :
       filter_runtime_action: liip_imagine.controller:filterRuntimeAction
 
 
-  # your filter sets are defined here
   filter_sets :
       cache : ~
-      # the name of the "filter set"
       catalog_item_main:
-          # adjust the image quality to 75%
           quality : 100
-          # list of transformations to apply (the "filters")
           filters :
-              # create a thumbnail: set size to 120x90 and use the "outbound" mode
-              # to crop the image when the size ratio of the input differs
               thumbnail  : { size : [160, 160], mode: inset  }
               background: { size: [160, 160], position: center, color: '#FFFFFF' }
 
       catalog_product:
-                # adjust the image quality to 75%
           quality : 100
-                # list of transformations to apply (the "filters")
           filters :
-              thumbnail  : { size : [200, 250], mode : outbound }
-              background: { size: [200, 250], position: center, color: '#FFFFFF' }
+              thumbnail  : { size : [250, 200], mode : outbound }
+              background: { size: [250, 200], position: center, color: '#FFFFFF' }
+
+      product_main:
+          quality : 100
+          filters :
+              thumbnail  : { size : [520, 400], mode : outbound }
+              background: { size: [520, 400], position: center, color: '#FFFFFF' }
+
+      product_nav:
+          quality : 100
+          filters :
+              thumbnail  : { size : [120, 90], mode : outbound }
+              background: { size: [120, 90], position: center, color: '#FFFFFF' }

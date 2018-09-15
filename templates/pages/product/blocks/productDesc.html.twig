@@ -1,0 +1,14 @@
+{% block product_desc %}
+    <div class="product-addition">
+        <div class="container">
+            <div class="product-addition__description description">
+                <div class="description__title title"> <i class="icon-file-text2"></i>Описание</div>
+                <div class="description__main">
+                    {% if data.product.models is not empty %}
+                        Данный товар подходит для моделей: {% for model in data.product.models%}{{ model.name }}{% if loop.last!=1 %}, {% endif %}{% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

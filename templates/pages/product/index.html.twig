@@ -1,0 +1,17 @@
+{% extends 'layouts/first.html.twig' %}
+
+{% use 'pages/product/blocks/productMain.html.twig' %}
+{% use 'pages/product/blocks/productFuture.html.twig' %}
+{% use 'pages/product/blocks/productDesc.html.twig' %}
+{% use 'blocks/breadcrumbs.html.twig' %}
+
+{% block main %}
+        {% block breadcrumbs %}{{ parent() }}{% endblock %}
+
+        {% block product_main %}{{ parent() }}{% endblock %}
+
+        {% block product_future %}{{ parent() }}{% endblock %}
+
+        {% block product_desc %}{{ parent() }}{% endblock %}
+{% endblock main %}
+

@@ -1,0 +1,92 @@
+{% block product_main %}
+    <div class="product-block">
+        <div class="container">
+            <div class="product-block__content">
+                <div class="product-block__title"><h1>{{ data.product.name }}</h1></div>
+                <div class="product-block__main main-product">
+                    <div class="main-product__img slider-product">
+                        <div class="slider-product__main slider-for" >
+                            {% if data.product.images is defined and data.product.images is not empty %}
+                                {% for image in data.product.images %}
+                                    <div><img  src="{{ asset('/img/products/'~image.image)|imagine_filter('product_main') }}"></div>
+                                {% endfor %}
+                            {% else %}
+                                <div><img src="{{ asset('/img/products/no_image.jpg')|imagine_filter('product_main') }}"></div>
+                            {% endif %}
+                        </div>
+                        <div class="slider-product__nav slider-nav ">
+                            {% if data.product.images is defined and data.product.images is not empty and data.product.images|length>1%}
+                                {% for image in data.product.images %}
+                                    <div class="slider-product__item"><img src="{{ asset('/img/products/'~image.image)|imagine_filter('product_nav') }}"></div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="main-product__info product-info">
+                        <div class="product-info__price price">
+                            <div class="price__title">Цена:</div>
+                            {% if data.product.priceAction is not empty and data.product.priceAction!=0 %}
+                                <div class="price__value-action">
+                                    {{ data.product.priceAction }}грн
+                                </div>
+                            {% endif %}
+
+                            <div class="price__value {% if data.product.priceAction is not empty and data.product.priceAction!=0 %}action{% endif %}">
+                                {{ data.product.price }}грн
+                            </div>
+                            {% if data.product.priceAction is not empty and data.product.priceAction!=0 %}
+                                 <div class="price__block-action">акция</div>
+                            {% endif %}
+                        </div>
+                        <div class="product-info__presence {% if data.product.active is empty or data.product.active == 0 %}not{% endif %} ">
+                            {% if data.product.active is not empty and data.product.active!=0 %}
+                                Есть в наличии
+                            {% else %}
+                                Нет в наличии
+                            {% endif %}
+                        </div>
+                        <div class="product-info__buttons">
+                            <button class="button red">Купить в один клик</button>
+                        </div>
+                        <div class="product-info__information information">
+                            {% if data.product.counry is not empty %}
+                                <div class="information__block">
+                                    <div class="information__title">Страна:</div>
+                                    <div class="information__value">{{ data.product.counry }}</div>
+                                </div>
+                            {% endif %}
+                            {% if data.product.code is not empty %}
+                                <div class="information__block">
+                                    <div class="information__title">Заводской номер:</div>
+                                    <div class="information__value">{{ data.product.code }}</div>
+                                </div>
+                            {% endif %}
+                            <div class="information__block">
+                                <div class="information__title">Срок доставки:</div>
+                                <div class="information__value">3-4 дн.</div>
+                            </div>
+                        </div>
+                        <div class="product-info__helper helper">
+                            <div class="helper__title"><i class="icon-credit-card helper__icon"></i>Оплата</div>
+                            <div class="helper__text">
+                                <ul class="list">
+                                    <li>Наличными при получении</li>
+                                    <li>Предоплата на карту банка</li>
+                                    <li>Безналичный расчет</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="product-info__helper helper">
+                            <div class="helper__title"><i class="icon-shield helper__icon"></i>Гарантия и возврат</div>
+                            <div class="helper__text">
+                                <p>обмен/возврат товара в течение 14 дней</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
