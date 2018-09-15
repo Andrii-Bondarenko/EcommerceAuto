@@ -5,7 +5,13 @@
             <div class="first-catalog__marks" >
                 {% for key,item in data.catalog.items %}
                     <div class="first-catalog__item">
-                        <a href="{{ getCatalogUrl(item,data.catalog_type) }}" class="first-catalog__link">
+                        <a href="{% spaceless %}
+                                {% if data.catalog_type != 'catalog-product' %}
+                                    {{ getCatalogUrl(item,data.catalog_type) }}
+                                {% else %}
+                                    {{ getCatalogProductUrl(item,data.model) }}
+                                {% endif %}{% endspaceless %}"
+                                class="first-catalog__link">
                             <img src="{{ asset('/img/brands/'~item.image)|imagine_filter('catalog_item_main') }}" class="first-catalog__img" >
                             <span class="first-catalog__name">{{ item.name }}</span>
                         </a>

@@ -5,6 +5,10 @@ namespace App\Controller;
 use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Model;
+use App\Entity\Product;
+use Doctrine\ORM\QueryBuilder;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -74,7 +78,7 @@ class CatalogController extends Controller
             ->getRepository(Model::class)->findOneBy(['alias'=>$model]);
         if (empty($model) || $model->getBrand()!==$brand) { throw new Exception('Product don\'t exist',404 );}
 
-
+        $data['model'] = $model;
         $data['catalog']['name'] = 'Крупноузловой каталог  '.$brand->getName().' '.$model->getName();
         $data['catalog_addition']['name'] = 'Запчасти для ТО ('.$brand->getName().' '.$model->getName().')';
 
@@ -91,9 +95,71 @@ class CatalogController extends Controller
 
         $currentItem['name'] = $model->getName();
         $data['breadcrumbs'][] = $currentItem;
-        $data['catalog_type'] = 'sas';
+        $data['catalog_type'] = 'catalog-product';
 
         return $this->render('pages/catalog/index.html.twig', ['data'=>$data]);
+    }
+
+    /**
+     * @Route("/brand/{alias}/{model}/{category}/{page}", name="catalog-product",  requirements={"page": "\d+"}, defaults={"page": 1})
+     */
+    public function catalogProduct($alias, $model, $category,$page)
+    {
+        $brand = $this->getDoctrine()
+            ->getRepository(Brand::class)->findOneBy(['alias'=>$alias]);
+        if (empty($brand)) { throw new Exception('Product don\'t exist',404 );}
+
+        $model = $this->getDoctrine()
+            ->getRepository(Model::class)->findOneBy(['alias'=>$model]);
+        if (empty($model) || $model->getBrand()!==$brand) { throw new Exception('Product don\'t exist',404 );}
+
+        $category = $this->getDoctrine()
+            ->getRepository(Category::class)->findOneBy(['alias'=>$category]);
+        if (empty($category)) { throw new Exception('Product don\'t exist',404 );}
+
+        $data['catalog']['name'] = 'Каталог  '.$brand->getName().' '.$model->getName(). ' ('.$category->getName().')';
+        $data['catalog_addition']['name'] = 'Запчасти для ТО ('.$brand->getName().' '.$model->getName().')';
+        $data['catalog_addition']['items'] = $this->getDoctrine()
+            ->getRepository(Category::class)->findBy(['active'=>1,'showBottom'=>1]);
+
+
+        $data['pager'] = $this->getPagerCatalogProduct($brand, $model, $category,$page);
+
+        $brandItem['name'] = $brand->getName();
+        $brandItem['link'] = $this->generateUrl('catalog-brand', array('alias' => $brand->getAlias()));
+
+        $modelItem['name'] = $model->getName();
+        $modelItem['link'] = $this->generateUrl('catalog-model',
+            array(
+                'alias' => $brand->getAlias(),
+                'model'=>$model->getAlias())
+            );
+
+        $data['breadcrumbs'][] = $brandItem;
+        $data['breadcrumbs'][] = $modelItem;
+
+        $currentItem['name'] = $category->getName();
+        $data['breadcrumbs'][] = $currentItem;
+
+        return $this->render('pages/catalog/items.html.twig', ['data'=>$data]);
+    }
+
+    private function getPagerCatalogProduct($brand,$model,$category,$page) {
+        /** @var $qb QueryBuilder*/
+        $qb = $this->getDoctrine()->getManager()->getRepository(Product::class)
+            ->createQueryBuilder("product");
+
+        $qb->andWhere('product.category = :category')->setParameter('category',$category->getId());
+        $qb->andWhere('product.brand = :brand')->setParameter('brand',$brand->getId());
+        $qb->leftJoin('product.models', 'm');
+        $qb->andWhere('m.id=:model')->setParameter('model',$model->getId());
+        $adapter = new DoctrineORMAdapter($qb);
+        $pagerfanta = new Pagerfanta($adapter);
+
+        $pagerfanta->setMaxPerPage(8);
+        $pagerfanta->setCurrentPage($page);
+
+        return $pagerfanta;
     }
 
 }

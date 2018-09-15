@@ -28,7 +28,9 @@
         position: relative;
       }
     &:hover {
-        border: 1px solid $mainRed;
+        .product-catalog__name {
+          color: $mainRed;
+        }
     }
 
   }
@@ -38,6 +40,8 @@
     line-height: 1.66;
     font-size: 16px;
     text-align: center;
+    max-width: 250px;
+    height: 72px;
   }
 
   &__action {
@@ -94,7 +98,7 @@
     color: $mainRed;
   }
   &__button {
-    padding: 5px 5px;
+    padding: 8px 12px;
     &:hover {
       background-color: $mainRedHover;
     }
@@ -190,6 +194,14 @@
       &:hover {
         border: none;
       }
+    }
+
+  }
+  &__item--disabled {
+    border: 1px solid $header-top !important;
+    pointer-events: none!important;
+    &:before {
+      color:$header-top!important;
     }
   }
 }

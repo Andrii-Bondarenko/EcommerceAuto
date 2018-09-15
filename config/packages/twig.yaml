@@ -2,3 +2,10 @@ twig:
     paths: ['%kernel.project_dir%/templates']
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+
+    globals:
+        pagerfanta_opts:
+            omitFirstPage: true
+            previous_message: ‘&laquo;’
+            next_message:     ‘&raquo;’
+            dots_message:     ‘ … ‘

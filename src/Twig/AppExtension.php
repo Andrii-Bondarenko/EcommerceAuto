@@ -32,8 +32,10 @@ class AppExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('getCatalogUrl', array($this, 'getCatalogUrl'))
-
+            new \Twig_SimpleFunction('getCatalogUrl', array($this, 'getCatalogUrl')),
+            new \Twig_SimpleFunction('getCatalogProductUrl', array($this, 'getCatalogProductUrl')),
+            new \Twig_SimpleFunction('getImageForProductCatalog', array($this, 'getImageForProductCatalog')),
+            new \Twig_SimpleFunction('getCropString', array($this, 'getCropString'))
         );
     }
 
@@ -53,6 +55,44 @@ class AppExtension extends \Twig_Extension
                     array('alias' => $item->getBrand()->getAlias(),'model'=> $item->getAlias())
                 );
         }
+    }
+
+    public function getCatalogProductUrl($item, $model)
+    {
+
+        return $this->router->generate(
+            'catalog-product',
+            array(
+                'alias' => $model->getBrand()->getAlias(),
+                'model'=> $model->getAlias(),
+                'category'=>$item->getAlias()
+
+        ));
+
+    }
+
+    public function getImageForProductCatalog($product)
+    {
+        $images = $product->getImages();
+
+        if(!empty($images)) {
+            foreach ($images as $image) {
+                return '/img/products/'.$image->getImage();
+            }
+        } else {
+            return '/img/products/no_image.jpg';
+        }
+    }
+
+    public function getCropString($string, $length)
+    {
+
+        if(mb_strlen($string,'utf-8')>$length) {
+            return mb_substr($string, 0, $length,'utf-8').'...';
+        }else {
+            return $string;
+        }
+
     }
 
 }

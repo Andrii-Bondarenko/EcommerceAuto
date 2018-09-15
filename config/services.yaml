@@ -29,3 +29,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+     # Twig
+    pagerfanta.view.my:
+          class: App\View\DefaultPaginationView
+          public: false
+          tags:
+              - { name: 'pagerfanta.view', alias: 'default-app-pagination' }

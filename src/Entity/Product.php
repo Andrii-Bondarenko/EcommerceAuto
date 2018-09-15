@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\JoinColumn;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
+ * @ORM\Table(options={"collate":"utf8_general_ci", "charset":"utf8", "engine":"MyISAM"})
  */
 class Product
 {

@@ -1,0 +1,44 @@
+{% block catalog %}
+    <div class="container">
+        <div class="main__first-catalog product-catalog">
+            <div class="product-catalog__title">{{ data.catalog.name }}</div>
+            <div class="product-catalog__items" >
+            {% for item in data.pager.currentPageResults %}
+                <div class="product-catalog__item">
+                    <a href="#" class="product-catalog__link">
+                        {% if item.priceAction is not empty and item.priceAction !=0 %}
+                            <div class="product-catalog__action">Акция</div>
+                        {% else %}
+                            {% if item.new == 1 %}
+                                <div class="product-catalog__new">Новинка</div>
+                            {% endif %}
+                        {% endif %}
+                        <img src="{{ asset('/img/products/no_image.jpg')|imagine_filter('catalog_product') }}" class="product-catalog__img" >
+                        <span class="product-catalog__name">{{ getCropString(item.name,65) }}</span>
+                    </a>
+                    <div class="product-catalog__info">
+                        <div class="product-catalog__button red">
+                            <a href="" class="product-catalog__button-link">К товару</a>
+                        </div>
+                        <div class="product-catalog__price">
+                            {% if item.priceAction is not empty and item.priceAction !=0%}
+                                <div class="product-catalog__price-action">{{ item.priceAction }}грн</div>
+                            {% endif %}
+                            <div class="product-catalog__price-item{% if item.priceAction is not empty and item.priceAction !=0%} action{% endif %}">
+                                {{ item.price }}грн
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div>Ничего не найдено</div>
+            {% endfor %}
+            </div>
+        </div>
+        {% if data.pager.currentPageResults is  defined and data.pager.currentPageResults is not empty %}
+            {% if data.pager.nbPages !=1 %}
+                {{ pagerfanta(data.pager, 'default-app-pagination')}}
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

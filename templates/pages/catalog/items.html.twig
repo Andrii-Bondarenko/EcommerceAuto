@@ -1,0 +1,14 @@
+{% extends 'layouts/first.html.twig' %}
+
+{% use 'blocks/items.html.twig' %}
+{% use 'blocks/breadcrumbs.html.twig' %}
+{% use 'blocks/feedback.html.twig' %}
+{% block main %}
+
+        {% block breadcrumbs %}{{ parent() }}{% endblock %}
+
+        {% block catalog %}{{ parent() }}{% endblock %}
+
+        {% block feedback %}{{ parent() }}{% endblock %}
+{% endblock main %}
+

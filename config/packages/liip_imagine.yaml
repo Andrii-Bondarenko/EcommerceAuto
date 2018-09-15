@@ -38,3 +38,10 @@ liip_imagine :
               # to crop the image when the size ratio of the input differs
               thumbnail  : { size : [160, 160], mode: inset  }
               background: { size: [160, 160], position: center, color: '#FFFFFF' }
+
+      catalog_product:
+                # adjust the image quality to 75%
+          quality : 100
+                # list of transformations to apply (the "filters")
+          filters :
+              thumbnail  : { size : [200, 250], mode : outbound }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29a575cfcd98313b5945a8fe287a71c9",
+    "content-hash": "58b73765a32737d91f85ad81b3188a43",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5431,6 +5431,65 @@
                 "validate"
             ],
             "time": "2018-01-29T19:49:41+00:00"
+        },
+        {
+            "name": "white-october/pagerfanta-bundle",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
+                "reference": "3f97e71c9d3f75e7a6179aa82c863497bf298b2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/3f97e71c9d3f75e7a6179aa82c863497bf298b2d",
+                "reference": "3f97e71c9d3f75e7a6179aa82c863497bf298b2d",
+                "shasum": ""
+            },
+            "require": {
+                "pagerfanta/pagerfanta": "^1.1.0|^2.0.0",
+                "php": ">=5.3",
+                "symfony/framework-bundle": "~2.3|~3.0|~4.0",
+                "symfony/property-access": "~2.3|~3.0|~4.0",
+                "symfony/twig-bundle": "~2.3|~3.0|~4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7|~4.0|^5.0",
+                "symfony/symfony": "~2.3|~3.0|~4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "WhiteOctoberPagerfantaBundle.php"
+                ],
+                "psr-4": {
+                    "WhiteOctober\\PagerfantaBundle\\DependencyInjection\\": "DependencyInjection",
+                    "WhiteOctober\\PagerfantaBundle\\EventListener\\": "EventListener",
+                    "WhiteOctober\\PagerfantaBundle\\Twig\\": "Twig",
+                    "WhiteOctober\\PagerfantaBundle\\View\\": "View"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pablo Díez",
+                    "email": "pablodip@gmail.com"
+                }
+            ],
+            "description": "Bundle to use Pagerfanta with Symfony2",
+            "keywords": [
+                "page",
+                "paging"
+            ],
+            "time": "2018-06-20T09:32:42+00:00"
         },
         {
             "name": "zendframework/zend-code",

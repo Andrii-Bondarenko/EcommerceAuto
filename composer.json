@@ -26,7 +26,8 @@
         "symfony/validator": "*",
         "symfony/web-link": "*",
         "symfony/yaml": "*",
-        "vich/uploader-bundle": "^1.8"
+        "vich/uploader-bundle": "^1.8",
+        "white-october/pagerfanta-bundle": "^1.2"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
