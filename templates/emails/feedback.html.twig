@@ -8,10 +8,16 @@
 </head>
 <body>
 <p>Заказ:</p><br>
-<p>Имя: {{ name }}</p><br>
-<p>Телефон: {{ phone }}</p><br>
+<p>Имя: {{ name }}</p>
+<p>Телефон: {{ phone }}</p>
 {% if comment is defined and comment is not empty %}
-    <p>Коментарий: {{ comment }}</p><br>
+    <p>Коментарий: {{ comment }}</p>
+{% endif %}
+{% if product is defined and product is not empty %}
+<p>Продукт:{{ product }}</p>
+{% endif %}
+{% if code is defined and code is not empty %}
+<p>Inside code:{{ code }}</p>
 {% endif %}
 </body>
 </html>

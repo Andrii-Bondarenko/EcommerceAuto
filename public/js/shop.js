@@ -22,6 +22,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: url,
+            data: {id:$('.product-id').val()},
             complete: (resPopup) => {
                 let popup = $(resPopup.responseText).attr('id');
                 if($('#'+popup)) {

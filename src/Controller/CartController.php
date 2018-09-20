@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +30,8 @@ class CartController extends Controller
         if(!$request->isXmlHttpRequest()) {
             throw new Exception('Product don\'t exist',404 );
         }
-        return $this->render('popups/fastCart.html.twig');
+
+        return $this->render('popups/fastCart.html.twig',['id'=>$request->request->get('id')]);
 
     }
 
@@ -58,6 +60,15 @@ class CartController extends Controller
             }
 
         } else {
+            $productName = '';
+            $productCode = '';
+            if(!empty($data['id'])) {
+                /** @var Product $product*/
+                $product = $this->getDoctrine()->getRepository(Product::class)->find($data['id']);
+                $productName = $product->getName();
+                $productCode = $product->getInsideCode();
+            }
+
             $message = (new \Swift_Message('Заказ'))
                 ->setFrom('work.vereika@gmail.com')
                 ->setTo('work.vereika@gmail.com')
@@ -67,6 +78,8 @@ class CartController extends Controller
                         'name' => $data['name'],
                         'phone' => $data['phone'],
                         'comment' => $data['comment'],
+                        'product' => $productName,
+                        'code' => $productCode,
                     )
                 ),'text/html');
 
