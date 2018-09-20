@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="762ba3c9-c94f-4d9d-9b3b-2f633c2cf979" name="Default" comment="htac">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/shop.js" afterPath="$PROJECT_DIR$/public/js/shop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/CartController.php" afterPath="$PROJECT_DIR$/src/Controller/CartController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/emails/feedback.html.twig" afterPath="$PROJECT_DIR$/templates/emails/feedback.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -470,7 +467,7 @@
       <workItem from="1537029068356" duration="19268000" />
       <workItem from="1537093715236" duration="4568000" />
       <workItem from="1537296785827" duration="7874000" />
-      <workItem from="1537465243306" duration="9816000" />
+      <workItem from="1537465243306" duration="9936000" />
     </task>
     <task id="LOCAL-00001" summary="header, first page">
       <created>1533472825565</created>
@@ -490,7 +487,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240003000" />
+    <option name="totallyTimeSpent" value="240123000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
