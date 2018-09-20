@@ -54,13 +54,14 @@ $(document).ready(function () {
             data: data,
             dataType: 'json',
             success:function(data) {
-                console.log(data);
                 if (data['status'] === false) {
-                    if(data['name']['message']) {
+                    if(typeof data['name']['message']!== "undefined") {
+                        $('#name').parent().find('span').remove();
                         $('#name').after('<span>'+data['name']['message']+'</span>');
                     }
 
-                    if(data['phone']['message']) {
+                    if(typeof data['phone']['message']!== "undefined" ) {
+                        $('#phone').parent().find('span').remove();
                         $('#phone').after('<span>'+data['phone']['message']+'</span>');
                     }
                 } else {

@@ -45,6 +45,8 @@ class CartController extends Controller
 
         $data = $request->request->get('data');
         $response = [];
+        $response['name'] = [];
+        $response['phone'] = [];
         if(empty($data['name']) || empty($data['phone'])) {
             if(empty($data['name'])) {
                 $response['name']['message'] = 'Поле Имя не может быть пустым полем';
