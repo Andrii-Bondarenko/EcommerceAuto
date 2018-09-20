@@ -57,7 +57,7 @@ class CartController extends Controller
 
         } else {
             $message = (new \Swift_Message('Заказ'))
-                ->setFrom('work.vereika@gmail.com')
+                ->setFrom('part-store.com.ua')
                 ->setTo('work.vereika@gmail.com')
                 ->setBody( $this->renderView(
                     'emails/feedback.html.twig',

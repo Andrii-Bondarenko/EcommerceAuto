@@ -42,7 +42,7 @@ $(document).ready(function () {
     $(document).on('click', '.popup-modal-dismiss', function (e) {
         $.magnificPopup.close();
     });
-    
+
     $(document).on("click", ".sent-form-fast", function(e) {
         e.preventDefault();
         // get the properties and values from the form
@@ -64,6 +64,15 @@ $(document).ready(function () {
                         $('#phone').after('<span>'+data['phone']['message']+'</span>');
                     }
                 } else {
+                    $.magnificPopup.close();
+                    setTimeout(function () {
+                        $.magnificPopup.open({
+                            items: {
+                                src: '#success-buy'
+                            },
+                            showCloseBtn: true,
+                        });
+                    },300);
 
                 }
             }
