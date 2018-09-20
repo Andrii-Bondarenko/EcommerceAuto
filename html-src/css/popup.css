@@ -1,0 +1,93 @@
+.message {
+  width: 600px;
+  min-height: 164px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.34);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  padding-top: 18px; }
+  @media only screen and (max-width: 767px) {
+    .message {
+      width: 100%; } }
+  .message:before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 19px;
+    background-color: white; }
+    @media only screen and (max-width: 767px) {
+      .message:before {
+        width: 100%; } }
+  .message-inner {
+    min-height: 169px;
+    height: auto;
+    width: 100%;
+    background-color: white; }
+    .message-inner__form {
+      font-size: 16px;
+      display: flex;
+      flex-flow: column;
+      padding: 5px 30px; }
+      .message-inner__form .form-group {
+        padding-top: 16px;
+        display: flex;
+        justify-content: flex-end; }
+        .message-inner__form .form-group input {
+          font-size: 16px;
+          height: 34px;
+          width: 100%;
+          display: block;
+          border: 1px solid #c00002;
+          padding-left: 10px;
+          outline: none;
+          font-family: "Open Sans", sans-serif;
+          color: #4b4b4b; }
+        .message-inner__form .form-group textarea {
+          font-size: 16px;
+          width: 100%;
+          display: block;
+          height: 60px;
+          border: 1px solid #C00002;
+          padding-left: 10px;
+          outline: none;
+          font-family: "Open Sans", sans-serif;
+          color: #4b4b4b; }
+        .message-inner__form .form-group label {
+          padding-right: 10px;
+          display: block; }
+      .message-inner__form .btn-group {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end; }
+        .message-inner__form .btn-group button {
+          height: 34px;
+          margin-left: 15px;
+          display: block;
+          width: 100px; }
+    .message-inner__info {
+      font-size: 16px;
+      display: flex;
+      flex-flow: column;
+      padding: 5px 30px;
+      align-content: center; }
+      .message-inner__info .label-popup {
+        text-align: center;
+        padding: 10px 0; }
+        .message-inner__info .label-popup p {
+          padding-bottom: 7px; }
+      .message-inner__info .info-button {
+        display: flex;
+        justify-content: center; }
+  .message .label-popup {
+    font-size: 24px; }
+
+.mfp-hide {
+  display: none !important; }

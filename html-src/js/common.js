@@ -12,11 +12,13 @@ $(document).ready(function () {
         asNavFor: '.slider-for',
         dots: false,
         arrows: false,
+        centerMode: true,
         focusOnSelect: true
     });
 
 
     $('.cd-nav-trigger').on('click', function(event){
+
         event.preventDefault();
         $('.bottom-nav__list').toggleClass('nav-is-visible');
         $('.cd-nav-trigger').toggleClass('open');

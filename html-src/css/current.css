@@ -138,3 +138,30 @@
 
 .link:hover {
   text-decoration: underline; }
+
+.btn-sent {
+  color: white;
+  background-color: #C00002;
+  height: 34px;
+  width: 100px;
+  cursor: pointer; }
+  .btn-sent:hover {
+    background-color: #E03838; }
+
+.btn-cancel {
+  background-color: #e3e3e3;
+  height: 34px;
+  width: 100px;
+  cursor: pointer; }
+  .btn-cancel:hover {
+    color: white;
+    background-color: #c1c1c1; }
+
+.btn-ok {
+  color: white;
+  background-color: #C00002;
+  height: 34px;
+  width: 75px;
+  cursor: pointer; }
+  .btn-ok:hover {
+    background-color: #E03838; }

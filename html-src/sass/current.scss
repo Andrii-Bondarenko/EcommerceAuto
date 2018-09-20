@@ -183,3 +183,37 @@
 .link:hover {
   text-decoration: underline;
 }
+
+.btn-sent {
+  color: white;
+  background-color: $mainRed;
+  height: 34px;
+  width: 100px;
+  cursor: pointer;
+  &:hover {
+    background-color: $mainRedHover;
+  }
+}
+
+.btn-cancel {
+
+  background-color: $header-top;
+  height: 34px;
+  width: 100px;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    background-color: $GrayHover;
+  }
+}
+
+.btn-ok {
+  color: white;
+  background-color: $mainRed;
+  height: 34px;
+  width: 75px;
+  cursor: pointer;
+  &:hover {
+    background-color: $mainRedHover;
+  }
+}

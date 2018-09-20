@@ -43,8 +43,7 @@
 .callback {
   align-items: center; }
   .callback__title {
-    padding: 5px 0;
-    text-align: center; }
+    padding: 5px 0; }
   .callback__button {
     padding: 5px 0; }
     .callback__button button {

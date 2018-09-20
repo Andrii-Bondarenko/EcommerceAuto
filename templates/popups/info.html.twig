@@ -1,0 +1,13 @@
+<div class="message mfp-hide" id="2">
+    <div class="message-inner">
+        <div class="message-inner__info">
+            <div class="label-popup">
+                {% if message_first is defined %}<p>{{ message_first }}</p>{% endif %}
+                {% if message_second is defined %}<p> {{ message_second }}</p>{% endif %}
+            </div>
+            <div class="info-button">
+                <button class="btn-ok popup-modal-dismiss">ОК</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+@import "vars";
+
+.message {
+  width: 600px;
+  min-height: 164px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.34);
+  @include centerer-xy;
+  overflow: hidden;
+  padding-top: 18px;
+  @include mq('phone', max) {
+    width: 100%;
+  }
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 19px;
+    background-color: white;
+    @include mq('phone', max) {
+      width: 100%;
+    }
+  }
+  &-inner{
+    min-height: 169px;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    &__form {
+      font-size: $little-font-size;
+      display: flex;
+      flex-flow: column;
+      padding: 5px 30px;
+      .form-group {
+        padding-top: 16px;
+        display: flex;
+        justify-content: flex-end;
+        input{
+          font-size: $little-font-size;
+          height: 34px;
+          width: 100%;
+          display: block;
+          border: 1px solid #c00002;
+          padding-left: 10px;
+          outline:none;
+          font-family: "Open Sans", sans-serif;
+          color: $header-top-font;
+
+        }
+        textarea {
+          font-size: $little-font-size;
+          width: 100%;
+          display: block;
+          height: 60px;
+          border:1px solid $mainRed;
+          padding-left: 10px;
+          outline:none;
+          font-family: "Open Sans", sans-serif;
+          color: $header-top-font;
+        }
+        label {
+          padding-right: 10px;
+          display: block;
+        }
+      }
+
+      .btn-group {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        flex-flow:row ;
+        justify-content: flex-end;
+        button {
+          height: 34px;
+          margin-left: 15px;
+          display: block;
+          width: 100px;
+        }
+      }
+    }
+    &__info {
+        font-size: $little-font-size;
+        display: flex;
+        flex-flow: column;
+        padding: 5px 30px;
+        align-content: center;
+        .label-popup {
+          text-align: center;
+          padding: 10px 0;
+          p {
+            padding-bottom: 7px;
+          }
+        }
+      .info-button {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+  .label-popup {
+    font-size: $big-font-size;
+  }
+
+
+}
+
+.mfp-hide {
+  display: none !important;
+}

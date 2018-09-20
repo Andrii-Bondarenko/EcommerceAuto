@@ -5,7 +5,7 @@ $green:#009A00;
 $header-top:#e3e3e3;
 $header-top-font:#4b4b4b;
 $mainRedHover: #E03838;
-
+$GrayHover: #c1c1c1;
 
 $big-font-size:24px;
 $little-font-size:16px;
@@ -33,4 +33,11 @@ $breakpoints: (
       @content;
     }
   }
+}
+
+@mixin centerer-xy() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
