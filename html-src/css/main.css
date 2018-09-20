@@ -1391,7 +1391,8 @@ a {
       .message-inner__form .form-group {
         padding-top: 16px;
         display: flex;
-        justify-content: flex-end; }
+        justify-content: flex-end;
+        flex-flow: column; }
         .message-inner__form .form-group input {
           font-size: 16px;
           height: 34px;
@@ -1414,6 +1415,8 @@ a {
           color: #4b4b4b; }
         .message-inner__form .form-group label {
           padding-right: 10px;
+          display: block; }
+        .message-inner__form .form-group span {
           display: block; }
       .message-inner__form .btn-group {
         padding-top: 15px;

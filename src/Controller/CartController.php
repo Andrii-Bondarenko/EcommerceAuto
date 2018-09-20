@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Config\Definition\Exception\Exception;
+
 
 /**
  * Base class, extends Easy Admin.
@@ -41,7 +43,36 @@ class CartController extends Controller
             throw new Exception('Product don\'t exist',404 );
         }
 
-        return new Request(json_encode($request->request->get('data')));
+        $data = $request->request->get('data');
+        $response = [];
+        if(empty($data['name']) || empty($data['phone'])) {
+            if(empty($data['name'])) {
+                $response['name']['message'] = 'Поле Имя не может быть пустым полем';
+                $response['status'] = false;
+            }
+            if(empty($data['phone'])) {
+                $response['phone']['message'] = 'Поле Телефон не может быть пустым полем';
+                $response['status'] = false;
+            }
+
+        } else {
+            $message = (new \Swift_Message('Заказ'))
+                ->setFrom('work.vereika@gmail.com')
+                ->setTo('work.vereika@gmail.com')
+                ->setBody( $this->renderView(
+                    'emails/feedback.html.twig',
+                    array(
+                        'name' => $data['name'],
+                        'phone' => $data['phone'],
+                        'comment' => $data['comment'],
+                    )
+                ),'text/html');
+
+            $this->get('mailer')->send($message);
+            $response['status'] = true;
+        }
+        return new Response(json_encode($response));
+
     }
 }
 

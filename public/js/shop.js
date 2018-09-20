@@ -42,11 +42,35 @@ $(document).ready(function () {
     $(document).on('click', '.popup-modal-dismiss', function (e) {
         $.magnificPopup.close();
     });
-
-    $('.sent-form-fast').on('click',function (e) {
+    
+    $(document).on("click", ".sent-form-fast", function(e) {
         e.preventDefault();
+        // get the properties and values from the form
+        var data = $(".fast-buy-form").serializeObject();
 
-    })
+        $.ajax({
+            url: '/cart/sentFormFastBuy',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success:function(data) {
+                console.log(data);
+                if (data['status'] === false) {
+                    if(data['name']['message']) {
+                        $('#name').after('<span>'+data['name']['message']+'</span>');
+                    }
 
+                    if(data['phone']['message']) {
+                        $('#phone').after('<span>'+data['phone']['message']+'</span>');
+                    }
+                } else {
 
+                }
+            }
+        });
+    });
+
+    $(document).on('click', '.form-group input', function (e) {
+       $(this).parent().find('span').remove();
+    });
 });

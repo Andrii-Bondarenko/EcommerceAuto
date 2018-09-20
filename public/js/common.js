@@ -12,7 +12,6 @@ $(document).ready(function () {
         asNavFor: '.slider-for',
         dots: false,
         arrows: false,
-        centerMode: true,
         focusOnSelect: true
     });
 
