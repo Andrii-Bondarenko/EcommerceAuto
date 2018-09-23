@@ -4,12 +4,16 @@
         <div class="container">
             <div class="header-content">
                 <div class="header__logo logo">
-                    <img class="logo__img" src="{{ asset('/img/design/logo.png') }}" alt="logo part-store" >
+                    <a href="{{ path('index') }}">
+                        <img class="logo__img" src="{{ asset('/img/design/logo.png') }}" alt="logo part-store" >
+                    </a>
                 </div>
                 <div class="header__info">
                     <div class="header__title">
                         <div class="header__logo-mobile">
-                            <img src="{{ asset('/img/design/logo.png') }}" alt="logo part-store">
+                            <a href="{{ path('index') }}">
+                                <img src="{{ asset('/img/design/logo.png') }}" alt="logo part-store">
+                            </a>
                         </div>
                         <div class="header__name-phone">
                             <div>Интернет-магазин автозапчастей</div>
@@ -67,7 +71,7 @@
                             <a href="{{ path('payment') }}" class="bottom-nav__link {% if app.request.attributes.get('_route') == 'payment' %}active{% endif %}">Оплата</a>
                         </li>
                         <li class="bottom-nav__item">
-                            <a href="{{ path('guarantee') }}" class="bottom-nav__link {% if app.request.attributes.get('_route') == 'guarantee' %}active{% endif %}">Гарантии</a>
+                            <a href="{{ path('guarantee') }}" class="bottom-nav__link {% if app.request.attributes.get('_route') == 'guarantee' %}active{% endif %}">Гарантия</a>
                         </li>
                     </ul>
                     <div class="bottom-nav__list-phone">

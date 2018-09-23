@@ -5,7 +5,9 @@
                 <div class="footer__content">
                     <div class="footer__contacts">
                         <div class="footer__logo logo-footer">
-                            <img class="logo-footer__img" src="{{ asset('/img/design/logo.png') }}" >
+                            <a href="{{ path('index') }}">
+                                <img class="logo-footer__img" src="{{ asset('/img/design/logo.png') }}" >
+                            </a>
                         </div>
                         <div class="footer__info">
                             <div>+38(063)4137379</div>
@@ -16,22 +18,16 @@
                     <div class="footer__menu">
                         <ul class="footer__list">
                             <li class="footer_item">
-                                <a class="footer__link" >Каталог</a>
+                                <a class="footer__link" href="{{ path('index') }}">Каталог</a>
                             </li>
                             <li class="footer_item">
-                                <a class="footer__link" >О компании</a>
+                                <a class="footer__link" href="{{ path('about') }}">О компании</a>
                             </li>
                             <li class="footer_item">
-                                <a class="footer__link" >Доставка</a>
+                                <a class="footer__link" href="{{ path('payment') }}">Оплата</a>
                             </li>
                             <li class="footer_item">
-                                <a class="footer__link" >Гарантии</a>
-                            </li>
-                            <li class="footer_item">
-                                <a class="footer__link" >Статьи</a>
-                            </li>
-                            <li class="footer_item">
-                                <a class="footer__link" >Контакты</a>
+                                <a class="footer__link" href="{{ path('guarantee') }}" >Гарантия</a>
                             </li>
                         </ul>
                     </div>
