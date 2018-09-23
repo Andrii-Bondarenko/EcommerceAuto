@@ -130,6 +130,16 @@
     font-family: icomoon !important;
     color: #C00002; }
 
+.list-content {
+  font-size: 16px; }
+  .list-content li {
+    padding: 2px 30px; }
+  .list-content li:before {
+    padding-right: 10px;
+    content: "\ea10";
+    font-family: icomoon !important;
+    color: #C00002; }
+
 .grey {
   background-color: #e3e3e3; }
 

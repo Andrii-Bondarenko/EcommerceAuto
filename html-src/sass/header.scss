@@ -262,6 +262,7 @@
     &:hover{
       border-bottom-color: $mainRed;
     }
+
     @include mq('tablet', max) {
       padding: 0 15px;
       display: block;
@@ -272,6 +273,9 @@
 
     }
 
+  }
+  .active {
+    border-bottom-color: $mainRed;
   }
   &__list-phone{
     height: 54px;

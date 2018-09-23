@@ -1,0 +1,36 @@
+{% extends 'layouts/first.html.twig' %}
+
+{% use 'blocks/breadcrumbs.html.twig' %}
+
+{% block main %}
+
+    {% block breadcrumbs %}{{ parent() }}{% endblock %}
+
+        <div class="content-block">
+            <div class="container">
+                 <div class="content-block__content" >
+                      <div class="content-block__title"><h1>Оплата</h1></div>
+                      <div class="content-block__text">
+                           <p>&emsp;В нашем интернет-магазине PART-STORE оплатить товар Вы можете следующими способами:</p>
+                           <p>&emsp;<span class="red-label">Наложенный платеж</span> – при получении товара в отделении почты или курьерской доставкой на дом.</p><br>
+                           <p>&emsp;<span class="red-label">По предоплате:</span></p>
+                           <ul class="list-content">
+                               <li>Оплата банковской картой Visa / MasterCard на расчетный счет</li>
+                               <li>Перевод на карту ПриватБанка (Приват24)</li>
+                               <li>Наличными в кассе любого банка или терминалах оплаты (Приват, IBox, BOXPAY, E-Pay, QIWI)</li>
+                               <li>На расчетный счет WebMoney</li>
+                           </ul><br>
+
+                          <p>Стоимость доставки оплачивает покупатель.</p>
+                          <p>&emsp;<span class="red-label">Внимание!</span> При доставке наложенным платежом стоимость доставки составляет
+                              55грн и выше, в зависимости от города
+                              получателя и товара. Подробнее о стоимости доставки,
+                              Вы можете узнать на официальной странице курьерской службы: <span class="red-label">Нова пошта</span>,  <span class="red-label">Delivery</span>,  <span class="red-label">Intime</span>.
+                              Поэтому рекомендуем вам оплачивать товар по предоплате, что позволит, существенно, сэкономить стоимость доставки.</p>
+
+                      </div>
+                 </div>
+            </div>
+        </div>
+{% endblock main %}
+

@@ -55,19 +55,19 @@
                 <nav class="header__bottom-nav bottom-nav ">
                     <ul class="bottom-nav__list">
                         <li class="bottom-nav__item">
-                            <a href="/" class="bottom-nav__link">Каталог</a>
+                            <a href="{{ path('index') }}"
+                               class="bottom-nav__link {% if app.request.attributes.get('_route') != 'about'
+                               and app.request.attributes.get('_route') != 'payment'
+                               and app.request.attributes.get('_route') != 'guarantee'%}active{% endif %}">Каталог</a>
                         </li>
                         <li class="bottom-nav__item">
-                            <a href="/about" class="bottom-nav__link">О компании</a>
+                            <a href="{{ path('about') }}" class="bottom-nav__link {% if app.request.attributes.get('_route') == 'about' %}active{% endif %}">О компании</a>
                         </li>
                         <li class="bottom-nav__item">
-                            <a href="/delivery" class="bottom-nav__link">Доставка</a>
+                            <a href="{{ path('payment') }}" class="bottom-nav__link {% if app.request.attributes.get('_route') == 'payment' %}active{% endif %}">Оплата</a>
                         </li>
                         <li class="bottom-nav__item">
-                            <a href="#" class="bottom-nav__link">Гарантии</a>
-                        </li>
-                        <li class="bottom-nav__item">
-                            <a href="/contacts" class="bottom-nav__link">Контакты</a>
+                            <a href="{{ path('guarantee') }}" class="bottom-nav__link {% if app.request.attributes.get('_route') == 'guarantee' %}active{% endif %}">Гарантии</a>
                         </li>
                     </ul>
                     <div class="bottom-nav__list-phone">

@@ -205,6 +205,9 @@
       border-bottom: 1px solid #33414a;
       color: #ffffff; } }
 
+.bottom-nav .active {
+  border-bottom-color: #C00002; }
+
 .bottom-nav__list-phone {
   height: 54px;
   font-size: 30px;

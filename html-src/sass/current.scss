@@ -173,6 +173,20 @@
   }
 }
 
+.list-content {
+  font-size: $little-font-size;
+  li {
+    padding: 2px 30px;
+
+  }
+  li:before {
+    padding-right: 10px;
+    content: "\ea10";
+    font-family: icomoon !important;
+    color: $mainRed;
+  }
+}
+
 .grey {
   background-color: $header-top;
 }
