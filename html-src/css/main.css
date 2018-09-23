@@ -1283,6 +1283,8 @@ a {
   border: 1px solid #C00002;
   outline: none;
   cursor: pointer; }
+  .slider-product__item img {
+    margin: auto; }
 
 .main-product {
   display: flex;
