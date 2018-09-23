@@ -8,7 +8,7 @@
                         <div class="slider-product__main slider-for" >
                             {% if data.product.images is defined and data.product.images is not empty %}
                                 {% for image in data.product.images %}
-                                    <div><img  src="{{ asset('/img/products/'~image.image)|imagine_filter('product_main') }}"></div>
+                                    <div><img src="{{ asset('/img/products/'~image.image)|imagine_filter('product_main') }}"></div>
                                 {% endfor %}
                             {% else %}
                                 <div><img src="{{ asset('/img/products/no_image.jpg')|imagine_filter('product_main') }}"></div>
@@ -64,7 +64,7 @@
                             {% endif %}
                             <div class="information__block">
                                 <div class="information__title">Срок доставки:</div>
-                                <div class="information__value">3-4 дн.</div>
+                                <div class="information__value">2-3 дн.</div>
                             </div>
                         </div>
                         <div class="product-info__helper helper">

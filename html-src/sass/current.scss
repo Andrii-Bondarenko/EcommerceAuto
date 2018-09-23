@@ -110,7 +110,7 @@
   border-bottom: 1px solid $header-top;
   &__list {
     display: flex;
-    flex-flow: row;
+    flex-flow: wrap;
   }
   &__item {
     display: flex;
