@@ -1,0 +1,18 @@
+{% extends 'layouts/first.html.twig' %}
+
+{% block main %}
+    <div class="error">
+        <div class="container">
+            <div class="error__content">
+                <div>
+                    <img src="{{ asset('/img/design/404.jpg') }}" alt="part-store error 404">
+                </div>
+                <div>Страница, на которую Вы перешли не существует. Возможно Вы ввели неправильный адрес или страница удалена.</div>
+                <div>
+                    <a href="{{ path('index') }}" class="link">вернуться на главную</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
