@@ -1,6 +1,6 @@
 @import "vars";
 .content-block {
-  &_content {
+  &__content {
     display: flex;
     flex-flow: column;
   }
@@ -13,5 +13,19 @@
     font-size: $little-font-size;
     padding: 10px 0;
     line-height: 1.67;
+  }
+}
+
+.about-block {
+  background: url('../img/design/audi-about.jpg') no-repeat;
+  background-size: cover;
+  @include mq('tablet', max) {
+    background:none;
+  }
+}
+.about-content {
+  width:60%;
+  @include mq('tablet', max) {
+    width: 100%;
   }
 }

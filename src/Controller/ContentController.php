@@ -8,6 +8,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContentController extends Controller
 {
-
+    /**
+     * @Route("/about", name="about")
+     */
+    public function about()
+    {
+        $currentItem['name'] = "О компании";
+        $data['breadcrumbs'][] = $currentItem;
+        return $this->render('pages/content/about.html.twig', ['data'=>$data]);
+    }
 }
 

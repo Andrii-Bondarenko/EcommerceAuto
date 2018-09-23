@@ -165,3 +165,6 @@
   cursor: pointer; }
   .btn-ok:hover {
     background-color: #E03838; }
+
+.red-label {
+  color: #C00002; }
