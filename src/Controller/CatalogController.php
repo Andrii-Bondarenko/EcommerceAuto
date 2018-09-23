@@ -142,7 +142,7 @@ class CatalogController extends Controller
         $adapter = new DoctrineORMAdapter($qb);
         $pagerfanta = new Pagerfanta($adapter);
 
-        $pagerfanta->setMaxPerPage(8);
+        $pagerfanta->setMaxPerPage(12);
         $pagerfanta->setCurrentPage($page);
 
         return $pagerfanta;
@@ -166,6 +166,40 @@ class CatalogController extends Controller
         $currentItem['name'] = $category->getName();
         $breadcrumbs[] = $currentItem;
         return $breadcrumbs;
+    }
+
+
+
+    /**
+     * @Route("/search/{page}", name="search",  requirements={"page": "\d+"}, defaults={"page": 1})
+     */
+    public function search($page, Request $request)
+    {
+        $search = trim($request->query->get('search'));
+        $data['catalog']['name'] = 'Поиск "'.$search.'"';
+        $data['pager'] = $this->getPagerSearch($page,$search);
+
+        $currentItem['name'] = "Поиск";
+        $data['breadcrumbs'][] = $currentItem;
+        $data['search'] = $search;
+        return $this->render('pages/catalog/items.html.twig', ['data'=>$data]);
+    }
+
+    private function getPagerSearch($page, $search) {
+        /** @var $qb QueryBuilder*/
+        $qb = $this->getDoctrine()->getManager()->getRepository(Product::class)
+            ->createQueryBuilder("product");
+
+        $qb->having( 'product.name LIKE :query')
+            ->setParameter('query', '%' . $search . '%');
+
+        $adapter = new DoctrineORMAdapter($qb);
+        $pagerfanta = new Pagerfanta($adapter);
+
+        $pagerfanta->setMaxPerPage(12);
+        $pagerfanta->setCurrentPage($page);
+
+        return $pagerfanta;
     }
 
 }

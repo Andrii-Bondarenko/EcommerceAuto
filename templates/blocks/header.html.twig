@@ -19,9 +19,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="header__search search">
-                        <input class="search__input" type="text">
-                        <button class="search__button">Найти</button>
+                    <div class="header__search search" >
+                        <form action="{{ path('search') }}" class="search-form">
+                            <input class="search__input" type="text" name="search"
+                            value="{% if data.search is defined and data.search is not empty %}{{ data.search }}{% endif %}">
+                            <button type="submit" class="search__button">Найти</button>
+                        </form>
                     </div>
                 </div>
                 <div class="header__info">

@@ -170,6 +170,14 @@
     background-color: $mainRed;
     color: white;
     font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      background-color: $mainRedHover;
+    }
+  }
+  .search-form {
+    width: 100%;
+    display: flex;
   }
 }
 

@@ -249,7 +249,7 @@ class ProductController extends EasyAdminController
             'ц', 'ч', 'ш', 'щ',
             'ъ', 'ы', 'ь', 'э',
             'ю', 'я', ' ',',',
-            '(',')','.','&');
+            '(',')','.','&','/');
         $lat = array(
             'a', 'b', 'v', 'g',
             'd', 'e', 'e', 'gh',
@@ -268,7 +268,7 @@ class ProductController extends EasyAdminController
             'c', 'ch', 'sh', 'sch',
             'y', 'y', 'y', 'e',
             'yu', 'ya', '-', '-',
-            '-','-','-','-');
+            '-','-','-','-','-');
         return str_replace($rus, $lat, $str);
     }
 }

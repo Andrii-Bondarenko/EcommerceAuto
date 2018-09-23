@@ -123,7 +123,13 @@
     display: block;
     background-color: #C00002;
     color: white;
-    font-size: 16px; }
+    font-size: 16px;
+    cursor: pointer; }
+    .search__button:hover {
+      background-color: #E03838; }
+  .search .search-form {
+    width: 100%;
+    display: flex; }
 
 .timetable {
   display: flex;

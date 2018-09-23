@@ -22,4 +22,20 @@ $(document).ready(function () {
         $('.bottom-nav__list').toggleClass('nav-is-visible');
         $('.cd-nav-trigger').toggleClass('open');
     });
+
+    $('.search__button').on('click', function(event) {
+        event.preventDefault();
+        if($('.search__input').val().trim()!="") {
+            $('.search-form').submit();
+        }
+    });
+
+    $('.search__input').keyup(function(event) {
+        event.preventDefault();
+        if(event.keyCode == 13) {
+            if($('.search__input').val().trim()!="") {
+                $('.search-form').submit();
+            }
+        }
+    });
 });
