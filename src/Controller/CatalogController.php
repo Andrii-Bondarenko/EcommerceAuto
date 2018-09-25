@@ -66,9 +66,9 @@ class CatalogController extends Controller
 
 
     /**
-     * @Route("/brand/{alias}/{model}", name="catalog-model")
+     * @Route("/brand/{alias}/{model}/{page}", name="catalog-model", requirements={"page": "\d+"}, defaults={"page": 1})
      */
-    public function catalogModel($alias, $model)
+    public function catalogModel($alias, $model,$page)
     {
 
         $brand = $this->getDoctrine()
@@ -82,11 +82,10 @@ class CatalogController extends Controller
         $data['catalog']['name'] = 'Крупноузловой каталог  '.$brand->getName().' '.$model->getName();
         $data['catalog_addition']['name'] = 'Запчасти для ТО ('.$brand->getName().' '.$model->getName().')';
 
-        $data['catalog_addition']['items'] = $this->getDoctrine()
-            ->getRepository(Category::class)->findBy(['active'=>1,'showBottom'=>1]);
-
         $data['catalog']['items'] = $this->getDoctrine()
             ->getRepository(Category::class)->findBy(['active'=>1, 'showBottom'=>0]);
+
+        $data['pager'] = $this->getPagerCatalogModel($brand, $model,$page);
 
         $brandItem['name'] = $brand->getName();
         $brandItem['link'] = $this->generateUrl('catalog-brand', array('alias' => $brand->getAlias()));
@@ -97,7 +96,7 @@ class CatalogController extends Controller
         $data['breadcrumbs'][] = $currentItem;
         $data['catalog_type'] = 'catalog-product';
 
-        return $this->render('pages/catalog/index.html.twig', ['data'=>$data]);
+        return $this->render('pages/catalog/indexWithProduct.html.twig', ['data'=>$data]);
     }
 
     /**
@@ -136,6 +135,23 @@ class CatalogController extends Controller
             ->createQueryBuilder("product");
 
         $qb->andWhere('product.category = :category')->setParameter('category',$category->getId());
+        $qb->andWhere('product.brand = :brand')->setParameter('brand',$brand->getId());
+        $qb->leftJoin('product.models', 'm');
+        $qb->andWhere('m.id=:model')->setParameter('model',$model->getId());
+        $adapter = new DoctrineORMAdapter($qb);
+        $pagerfanta = new Pagerfanta($adapter);
+
+        $pagerfanta->setMaxPerPage(12);
+        $pagerfanta->setCurrentPage($page);
+
+        return $pagerfanta;
+    }
+
+    private function getPagerCatalogModel($brand,$model,$page) {
+        /** @var $qb QueryBuilder*/
+        $qb = $this->getDoctrine()->getManager()->getRepository(Product::class)
+            ->createQueryBuilder("product");
+
         $qb->andWhere('product.brand = :brand')->setParameter('brand',$brand->getId());
         $qb->leftJoin('product.models', 'm');
         $qb->andWhere('m.id=:model')->setParameter('model',$model->getId());
