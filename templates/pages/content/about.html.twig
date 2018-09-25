@@ -2,6 +2,12 @@
 
 {% use 'blocks/breadcrumbs.html.twig' %}
 
+{% block meta %}
+    <title>О компании Part-store - запчасти для авто</title>
+    <meta name="description" content="О нашей компании. Продажа качественных и оригинальных запчастей для авто ВАЗ, ГАЗ по всей Украине. Звоните и заказывайте — интернет-магазин Part-store ">
+    <meta name="keywords" content="Part-store">
+{% endblock meta %}
+
 {% block main %}
 
     {% block breadcrumbs %}{{ parent() }}{% endblock %}

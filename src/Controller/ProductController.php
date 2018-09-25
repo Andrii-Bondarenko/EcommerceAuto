@@ -16,9 +16,20 @@ class ProductController extends Controller
      */
     public function product($alias,SessionInterface $session)
     {
+
         $product = $this->getDoctrine()
             ->getRepository(Product::class)->findOneBy(['alias'=>$alias]);
         if (empty($product)) { throw new Exception('Product don\'t exist',404 );}
+
+
+        $data['title'] = 'Купить '.$product->getName();
+        $data['description'] = 'Купить '.$product->getName().' недорого - '.$product->getPrice().'грн. Запчасти для '.$product->getBrand().' в интернет-магазине с доставкой.';
+        $data['keywords'] = $product->getName().', купить '.$product->getName();
+        if($product->getCode()) {
+            $data['title'].= ' ('.$product->getCode().')';
+            $data['keywords'].= ', '.$product->getCode();
+            $data['description'].= ' Код '.$product->getCode().'';
+        }
 
         $data['product'] = $product;
         $data['breadcrumbs'] = $this->getBreadcrumbs($product,$session);

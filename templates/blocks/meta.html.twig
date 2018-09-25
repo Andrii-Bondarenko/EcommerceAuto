@@ -1,0 +1,6 @@
+{% block meta %}
+    {% if data.title is defined %}<title>{{ data.title }}</title>{% endif %}
+    {% if data.description is defined %}<meta name="description" content="{{ data.description }}" >{% endif %}
+    {% if data.keywords is defined %}<meta name="keywords" content="{{ data.keywords }}" >{% endif %}
+    {% if data.noindex is defined %}<meta name="robots" content="noindex, follow">{% endif %}
+{% endblock %}

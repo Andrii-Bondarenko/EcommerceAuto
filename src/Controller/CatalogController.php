@@ -23,6 +23,10 @@ class CatalogController extends Controller
      */
     public function index()
     {
+        $data['title'] = 'Купить автозапчасти недорого производителя ВАЗ, ГАЗ | +38 (063) 413-73-79';
+        $data['description'] = 'Интернет магазин автозапчастей Part-Store: недорогие запчасти от производителей ВАЗ, ГАЗ, ЗАЗ.';
+        $data['keywords'] = 'Интернет магазин автозапчастей, автозапчасти для ВАЗ, автозапчасти для ГАЗ, автозапчасти дешево, автозапчасти Украина';
+        //meta//
         $data['catalog']['name'] = 'Каталог автозапчастей';
         $data['catalog_addition']['name'] = 'Запчасти для ТО';
 
@@ -42,11 +46,14 @@ class CatalogController extends Controller
      */
     public function catalogBrand($alias)
     {
-
         $brand = $this->getDoctrine()
             ->getRepository(Brand::class)->findOneBy(['alias'=>$alias]);
 
         if (empty($brand)) { throw new Exception('Brand don\'t exist',404 );}
+
+        $data['title'] = 'Автозапчасти '.$brand->getName().', купить автозапчасти для '.$brand->getName();
+        $data['description'] = 'Автозапчасти '.$brand->getName().' от магазина Part-Store! Запчасти для всех моделей '.$brand->getName().' и других брендов, высокое качество и доступные цены! Спешите заказать запчасть! ☎(063)4137379. ';
+        $data['keywords'] = 'автозапчасти для '.$brand->getName().', интернет-магазин '.$brand->getName().', купить автозапчасти '.$brand->getName();
 
         $data['catalog']['name'] = 'Выберете модель '.$brand->getName();
         $data['catalog_addition']['name'] = 'Запчасти для ТО ('.$brand->getName().')';
@@ -77,6 +84,12 @@ class CatalogController extends Controller
         $model = $this->getDoctrine()
             ->getRepository(Model::class)->findOneBy(['alias'=>$model]);
         if (empty($model) || $model->getBrand()!==$brand) { throw new Exception('Product don\'t exist',404 );}
+        if (!empty($page) && $page>1) {
+            $data['noindex'] = '';
+        }
+        $data['title'] = 'Запчасти для '.$model->getName().', купить автозапчасти для '.$model->getName();
+        $data['description'] = 'Автозапчасти '.$model->getName().' от магазина Part-Store! Запчасти для '.$model->getName().' и других моделей '.$brand->getName().', низкие цены и быстрая доставка! Спешите заказать запчасть! ☎(063)4137379. ';
+        $data['keywords'] = 'автозапчасти для '.$model->getName().', интернет-магазин '.$model->getName().', купить автозапчасти '.$model->getName();
 
         $data['model'] = $model;
         $data['catalog']['name'] = 'Крупноузловой каталог  '.$brand->getName().' '.$model->getName();
@@ -104,6 +117,7 @@ class CatalogController extends Controller
      */
     public function catalogProduct($alias, $model, $category,$page,SessionInterface $session)
     {
+
         $brand = $this->getDoctrine()
             ->getRepository(Brand::class)->findOneBy(['alias'=>$alias]);
         if (empty($brand)) { throw new Exception('Product don\'t exist',404 );}
@@ -111,13 +125,19 @@ class CatalogController extends Controller
         $model = $this->getDoctrine()
             ->getRepository(Model::class)->findOneBy(['alias'=>$model]);
         if (empty($model) || $model->getBrand()!==$brand) { throw new Exception('Product don\'t exist',404 );}
-        $session->set('model',$model);
 
+        $session->set('model',$model);
         $category = $this->getDoctrine()
             ->getRepository(Category::class)->findOneBy(['alias'=>$category]);
         if (empty($category)) { throw new Exception('Product don\'t exist',404 );}
+        if (!empty($page) && $page>1) {
+            $data['noindex'] = '';
+        }
+        $data['title'] = 'Запчасти для '.$model->getName().' '.$category->getName().', купить автозапчасти для '.$model->getName() .' '.$category->getName();
+        $data['description'] = 'Запчасти '.$model->getName().' '.$category->getName().' от магазина Part-Store! Запчасти '.$category->getName().' для '.$model->getName().' и других моделей '.$brand->getName().', низкие цены и быстрая доставка! Спешите заказать запчасть! ☎(063)4137379. ';
+        $data['keywords'] = 'автозапчасти для '.$model->getName().' '.$category->getName().', интернет-магазин '.$model->getName().' '.$category->getName().', купить автозапчасти '.$model->getName().' '.$category->getName();
 
-        $data['catalog']['name'] = 'Каталог  '.$brand->getName().' '.$model->getName(). ' ('.$category->getName().')';
+        $data['catalog']['name'] = 'Каталог '.$model->getName(). ' ('.$category->getName().')';
         $data['catalog_addition']['name'] = 'Запчасти для ТО ('.$brand->getName().' '.$model->getName().')';
         $data['catalog_addition']['items'] = $this->getDoctrine()
             ->getRepository(Category::class)->findBy(['active'=>1,'showBottom'=>1]);
@@ -194,6 +214,12 @@ class CatalogController extends Controller
         $search = trim($request->query->get('search'));
         $data['catalog']['name'] = 'Поиск "'.$search.'"';
         $data['pager'] = $this->getPagerSearch($page,$search);
+
+        $data['noindex'] = '';
+        $data['title'] = 'Поиск '.'"'.$search.'"';
+        $data['description'] = 'Запчасти для авто от магазина Part-Store! Низкие цены и быстрая доставка! Спешите заказать запчасть! ☎(063)4137379. ';
+        $data['keywords'] = 'автозапчасти, интернет-магазин запчастей';
+
 
         $currentItem['name'] = "Поиск";
         $data['breadcrumbs'][] = $currentItem;
