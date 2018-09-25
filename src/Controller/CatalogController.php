@@ -55,7 +55,7 @@ class CatalogController extends Controller
         $data['description'] = 'Автозапчасти '.$brand->getName().' от магазина Part-Store! Запчасти для всех моделей '.$brand->getName().' и других брендов, высокое качество и доступные цены! Спешите заказать запчасть! ☎(063)4137379. ';
         $data['keywords'] = 'автозапчасти для '.$brand->getName().', интернет-магазин '.$brand->getName().', купить автозапчасти '.$brand->getName();
 
-        $data['catalog']['name'] = 'Выберете модель '.$brand->getName();
+        $data['catalog']['name'] = 'Выберите модель '.$brand->getName();
         $data['catalog_addition']['name'] = 'Запчасти для ТО ('.$brand->getName().')';
 
         $data['catalog_addition']['items'] = $this->getDoctrine()
