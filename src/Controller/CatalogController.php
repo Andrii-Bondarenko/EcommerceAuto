@@ -80,7 +80,7 @@ class CatalogController extends Controller
 
         $data['model'] = $model;
         $data['catalog']['name'] = 'Крупноузловой каталог  '.$brand->getName().' '.$model->getName();
-        $data['catalog_addition']['name'] = 'Запчасти для ТО ('.$brand->getName().' '.$model->getName().')';
+        $data['catalog_addition']['name'] = 'Все запчасти для ('.$model->getName().')';
 
         $data['catalog']['items'] = $this->getDoctrine()
             ->getRepository(Category::class)->findBy(['active'=>1, 'showBottom'=>0]);
