@@ -92,7 +92,7 @@ class CatalogController extends Controller
         $data['keywords'] = 'автозапчасти для '.$model->getName().', интернет-магазин '.$model->getName().', купить автозапчасти '.$model->getName();
 
         $data['model'] = $model;
-        $data['catalog']['name'] = 'Крупноузловой каталог  '.$brand->getName().' '.$model->getName();
+        $data['catalog']['name'] = 'Крупноузловой каталог '.$model->getName();
         $data['catalog_addition']['name'] = 'Все запчасти для ('.$model->getName().')';
 
         $data['catalog']['items'] = $this->getDoctrine()
