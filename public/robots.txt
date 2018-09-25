@@ -1,2 +1,22 @@
-User-agent: *
+User-agent: Googlebot
+Disallow: /cms/
+Disallow: /cart/
+
+User-agent: Yandex
+Disallow: /cms/
+Disallow: /cart/
+
+
+User-agent: Googlebot-Image
 Disallow: /
+Allow: /img/
+
+User-agent: YandexImages
+Disallow: /
+Allow: /img/
+
+﻿User-Agent: *
+Disallow: /cms/
+Disallow: /cart/
+
+Host: part-store.com.ua
