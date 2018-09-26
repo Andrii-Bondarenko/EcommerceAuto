@@ -1,1 +1,13 @@
+User-agent: Googlebot
+Disallow: /cms/
+Disallow: /cart/
 
+User-agent: Yandex
+Disallow: /cms/
+Disallow: /cart/
+
+User-Agent: *
+Disallow: /cms/
+Disallow: /cart/
+
+Host: http://part-store.com.ua
