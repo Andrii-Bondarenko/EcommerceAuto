@@ -6,16 +6,7 @@ User-agent: Yandex
 Disallow: /cms/
 Disallow: /cart/
 
-
-User-agent: Googlebot-Image
-Disallow: /
-Allow: /img/
-
-User-agent: YandexImages
-Disallow: /
-Allow: /img/
-
-﻿User-Agent: *
+User-Agent: *
 Disallow: /cms/
 Disallow: /cart/
 
