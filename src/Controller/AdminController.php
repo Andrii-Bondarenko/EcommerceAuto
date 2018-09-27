@@ -4,6 +4,9 @@ namespace App\Controller;
 
 
 
+use App\Entity\Brand;
+use App\Entity\Category;
+use App\Entity\Model;
 use App\Entity\Product;
 use Doctrine\DBAL\DBALException;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
@@ -41,7 +44,65 @@ class AdminController extends EasyAdminController
      */
     public function sitemapAction(Request $request)
     {
+        // We define an array of urls
+        $urls = [];
+        // We store the hostname of our website
+        $hostname = $request->getHost();
+        $urls[] = ['loc' => $this->get('router')->generate('about'), 'changefreq' => 'monthly', 'priority' => '0.8'];
+        $urls[] = ['loc' => $this->get('router')->generate('payment'), 'changefreq' => 'monthly', 'priority' => '0.8'];
+        $urls[] = ['loc' => $this->get('router')->generate('guarantee'), 'changefreq' => 'monthly', 'priority' => '0.8'];
+        $brandRepository = $this->getDoctrine()->getRepository(Brand::class);
+        $brands = $brandRepository->findAll();
 
+        /**@var Brand $brand*/
+        foreach ($brands as $brand) {
+            $urls[] = ['loc' => $this->get('router')->generate('catalog-brand', ['alias' => $brand->getAlias()]), 'changefreq' => 'weekly', 'priority' => '0.8'];
+        }
+
+        $modelRepository = $this->getDoctrine()->getRepository(Model::class);
+        $models = $modelRepository->findAll();
+        /**@var Model $model*/
+        foreach ($models as $model) {
+            $urls[] = ['loc' => $this->get('router')->generate('catalog-model', ['alias' => $model->getBrand()->getAlias(),'model' => $model->getAlias()]), 'changefreq' => 'weekly', 'priority' => '0.7'];
+        }
+
+        $categoryRepository = $this->getDoctrine()->getRepository(Category::class);
+        $categories = $categoryRepository->findBy(['active'=>1,'showBottom'=>0]);
+
+        /**@var Category $category*/
+
+        foreach ($categories as $category) {
+            foreach ($models as $model) {
+                $urls[] =
+                 [
+                    'loc' => $this->get('router')->generate(
+                        'catalog-product',
+                        [
+                            'alias' => $model->getBrand()->getAlias(),
+                            'model' => $model->getAlias(),
+                            'category' => $category->getAlias()
+                        ]
+                    ),
+                    'changefreq' => 'weekly',
+                    'priority' => '0.7'
+                ];
+            }
+        }
+
+        $productRepository = $this->getDoctrine()->getRepository(Product::class);
+        $products = $productRepository->findAll();
+
+        foreach ($products as $product) {
+            $urls[] = ['loc' => $this->get('router')->generate('product', ['alias' => $product->getAlias()]), 'changefreq' => 'weekly', 'priority' => '0.6'];
+        }
+
+        $response = new Response($this->renderView('website/sitemap.xml.twig', [
+            'urls' => $urls,
+            'hostname' => $hostname
+        ]));
+        $response->headers->set('Content-Type', 'xml');
+
+        return $response;
     }
 }
 

@@ -10,4 +10,5 @@ User-Agent: *
 Disallow: /cms/
 Disallow: /cart/
 
-Host: http://part-store.com.ua
+Host: part-store.com.ua
+Sitemap: https://part-store.com.ua/sitemap.xml
