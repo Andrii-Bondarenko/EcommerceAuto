@@ -3,6 +3,7 @@ RewriteEngine On
 <IfModule mod_negotiation.c>
     Options -MultiViews
 </IfModule>
+Redirect 301 /public https://part-store.com.ua
 
 RewriteCond %{HTTPS} =off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
