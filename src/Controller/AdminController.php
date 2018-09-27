@@ -116,5 +116,15 @@ class AdminController extends EasyAdminController
     {
         throw new NotFoundHttpException('Sorry not existing!');
     }
+
+    /**
+     * Génère le sitemap du site.
+     *
+     * @Route("/public", name="publicMain")
+     */
+    public function publicMainAction(Request $request)
+    {
+        throw new NotFoundHttpException('Sorry not existing!');
+    }
 }
 
