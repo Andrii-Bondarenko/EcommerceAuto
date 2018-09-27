@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends Controller
@@ -19,7 +20,7 @@ class ProductController extends Controller
 
         $product = $this->getDoctrine()
             ->getRepository(Product::class)->findOneBy(['alias'=>$alias]);
-        if (empty($product)) { throw new Exception('Product don\'t exist',404 );}
+        if (empty($product)) { throw new NotFoundHttpException('Sorry not existing!');}
 
 
         $data['title'] = 'Купить '.$product->getName();

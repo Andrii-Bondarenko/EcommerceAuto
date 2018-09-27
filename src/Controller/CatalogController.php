@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
@@ -49,7 +50,7 @@ class CatalogController extends Controller
         $brand = $this->getDoctrine()
             ->getRepository(Brand::class)->findOneBy(['alias'=>$alias]);
 
-        if (empty($brand)) { throw new Exception('Brand don\'t exist',404 );}
+        if (empty($brand)) { throw new NotFoundHttpException('Sorry not existing!');}
 
         $data['title'] = 'Автозапчасти '.$brand->getName().', купить автозапчасти для '.$brand->getName();
         $data['description'] = 'Автозапчасти '.$brand->getName().' от магазина Part-Store! Запчасти для всех моделей '.$brand->getName().' и других брендов, высокое качество и доступные цены! Спешите заказать запчасть! ☎(063)4137379. ';
@@ -80,10 +81,10 @@ class CatalogController extends Controller
 
         $brand = $this->getDoctrine()
             ->getRepository(Brand::class)->findOneBy(['alias'=>$alias]);
-        if (empty($brand)) { throw new Exception('Product don\'t exist',404 );}
+        if (empty($brand)) { throw new NotFoundHttpException('Sorry not existing!');}
         $model = $this->getDoctrine()
             ->getRepository(Model::class)->findOneBy(['alias'=>$model]);
-        if (empty($model) || $model->getBrand()!==$brand) { throw new Exception('Product don\'t exist',404 );}
+        if (empty($model) || $model->getBrand()!==$brand) { throw new NotFoundHttpException('Sorry not existing!');}
         if (!empty($page) && $page>1) {
             $data['noindex'] = '';
         }
@@ -120,16 +121,16 @@ class CatalogController extends Controller
 
         $brand = $this->getDoctrine()
             ->getRepository(Brand::class)->findOneBy(['alias'=>$alias]);
-        if (empty($brand)) { throw new Exception('Product don\'t exist',404 );}
+        if (empty($brand)) { throw new NotFoundHttpException('Sorry not existing!');}
 
         $model = $this->getDoctrine()
             ->getRepository(Model::class)->findOneBy(['alias'=>$model]);
-        if (empty($model) || $model->getBrand()!==$brand) { throw new Exception('Product don\'t exist',404 );}
+        if (empty($model) || $model->getBrand()!==$brand) { throw new NotFoundHttpException('Sorry not existing!');}
 
         $session->set('model',$model);
         $category = $this->getDoctrine()
             ->getRepository(Category::class)->findOneBy(['alias'=>$category]);
-        if (empty($category)) { throw new Exception('Product don\'t exist',404 );}
+        if (empty($category)) { throw new NotFoundHttpException('Sorry not existing!');}
         if (!empty($page) && $page>1) {
             $data['noindex'] = '';
         }

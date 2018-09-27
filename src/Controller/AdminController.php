@@ -24,6 +24,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\User;
 use App\Entity\Content;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Base class, extends Easy Admin.
  * Here we can change base functionality of Easy Admin module,
@@ -103,6 +104,17 @@ class AdminController extends EasyAdminController
         $response->headers->set('Content-Type', 'xml');
 
         return $response;
+    }
+
+
+    /**
+     * Génère le sitemap du site.
+     *
+     * @Route("/public/{page}", name="public", defaults={"page": 1},)
+     */
+    public function publicAction(Request $request)
+    {
+        throw new NotFoundHttpException('Sorry not existing!');
     }
 }
 

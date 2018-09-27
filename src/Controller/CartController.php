@@ -6,6 +6,7 @@ use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
@@ -28,7 +29,7 @@ class CartController extends Controller
     public function getPopupCart(Request $request)
     {
         if(!$request->isXmlHttpRequest()) {
-            throw new Exception('Product don\'t exist',404 );
+            throw new NotFoundHttpException('Sorry not existing!');
         }
 
         return $this->render('popups/fastCart.html.twig',['id'=>$request->request->get('id')]);
@@ -42,7 +43,7 @@ class CartController extends Controller
     public function sentFormFastBuy(Request $request)
     {
         if(!$request->isXmlHttpRequest()) {
-            throw new Exception('Product don\'t exist',404 );
+            throw new NotFoundHttpException('Sorry not existing!');
         }
 
         $data = $request->request->get('data');
