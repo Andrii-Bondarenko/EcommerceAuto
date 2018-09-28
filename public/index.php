@@ -5,6 +5,13 @@ use Symfony\Component\Debug\Debug;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 
+
+if (strpos($_SERVER['REQUEST_URI'],'/public') === 0) {
+    header("HTTP/1.0 404 Not Found");
+    header("Location: https://part-store.com.ua/notFound");
+    exit;
+}
+
 require __DIR__.'/../vendor/autoload.php';
 
 // The check is to ensure we don't use .env in production
