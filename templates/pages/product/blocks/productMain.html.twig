@@ -16,9 +16,9 @@
                             {% endif %}
                         </div>
                         <div class="slider-product__nav slider-nav ">
-                            {% if data.product.images is defined and data.product.images is not empty and data.product.images|length>1%}
-                                {% for image in data.product.images %}
-                                    <div class="slider-product__item"><img src="{{ asset('/img/products/'~image.image)|imagine_filter('product_nav') }}"></div>
+                            {% if images is defined and images is not empty and images|length>1%}
+                                {% for image in images %}
+                                    <div class="slider-product__item"><img src="{{ asset(images)|imagine_filter('product_nav') }}"></div>
                                 {% endfor %}
                             {% endif %}
                         </div>
