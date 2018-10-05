@@ -81,6 +81,40 @@ $(document).ready(function () {
         });
     });
 
+
+    $(document).on("click", ".button-feedback", function(e) {
+        e.preventDefault();
+        // get the properties and values from the form
+        var data = {'data': {'phone':$(".phone-block__form input").val()}};
+
+        $.ajax({
+            url: '/feedback/sentPhone',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success:function(data) {
+                if (data['status'] === false) {
+                    if(typeof data['phone']['message']!== "undefined" ) {
+                        $('.feedback-mistake').remove();
+                        $('#input-phone').val();
+                        $('.phone-block__form').after('<div class="red-label feedback-mistake"><span>'+data['phone']['message']+'</span></div>');
+                    }
+                } else {
+                    setTimeout(function () {
+                        $('#input-phone').val();
+                        $.magnificPopup.open({
+                            items: {
+                                src: '#success-buy'
+                            },
+                            showCloseBtn: true,
+                        });
+                    },300);
+
+                }
+            }
+        });
+    });
+
     $(document).on('click', '.form-group input', function (e) {
        $(this).parent().find('span').remove();
     });

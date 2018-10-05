@@ -926,6 +926,9 @@ a {
       width: 20%;
       display: block;
       font-size: 16px; }
+      .phone-block__form button:hover {
+        background: #E03838;
+        cursor: pointer; }
       @media only screen and (max-width: 479px) {
         .phone-block__form button {
           width: 30%; } }
