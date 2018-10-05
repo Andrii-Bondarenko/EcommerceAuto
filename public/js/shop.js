@@ -101,7 +101,7 @@ $(document).ready(function () {
                     }
                 } else {
                     setTimeout(function () {
-                        $('#input-phone').val();
+                        $('#input-phone').val('');
                         $.magnificPopup.open({
                             items: {
                                 src: '#success-buy'
