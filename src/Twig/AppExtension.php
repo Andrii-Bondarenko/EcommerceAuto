@@ -85,7 +85,7 @@ class AppExtension extends \Twig_Extension
             }
         }
 
-        if(empty($current) || !$fileSystem->exists('img/brands/'.$current)) {
+        if(empty($current) || !$fileSystem->exists('img/products/'.$current)) {
             return '/img/design/no-image.jpg';
         } else {
             return '/img/products/'.$current;
