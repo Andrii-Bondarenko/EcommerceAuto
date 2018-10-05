@@ -116,6 +116,7 @@ class AppExtension extends \Twig_Extension
     }
 
     public function getImagesForProduct($images) {
+        var_dump($images);
         $finalImage = [];
         $fileSystem = new Filesystem();
         foreach ($images as $image) {
