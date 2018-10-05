@@ -38,7 +38,8 @@ class AppExtension extends \Twig_Extension
             new \Twig_SimpleFunction('getCatalogProductUrl', array($this, 'getCatalogProductUrl')),
             new \Twig_SimpleFunction('getImageForProductCatalog', array($this, 'getImageForProductCatalog')),
             new \Twig_SimpleFunction('getCropString', array($this, 'getCropString')),
-            new \Twig_SimpleFunction('getImageCatalog', array($this, 'getImageCatalog'))
+            new \Twig_SimpleFunction('getImageCatalog', array($this, 'getImageCatalog')),
+            new \Twig_SimpleFunction('getImagesForProduct', array($this, 'getImagesForProduct'))
         );
     }
 
