@@ -4,6 +4,7 @@ namespace App\Twig;
 
 
 use App\Entity\Exam;
+use App\Entity\ProductImage;
 use App\Entity\RoleCheckpoint;
 use App\Entity\ScheduleCourse;
 use App\Entity\ScheduleStudent;
@@ -116,12 +117,12 @@ class AppExtension extends \Twig_Extension
     }
 
     public function getImagesForProduct($images) {
-        var_dump($images);
         $finalImage = [];
         $fileSystem = new Filesystem();
+        /** @var ProductImage $image*/
         foreach ($images as $image) {
-            if($fileSystem->exists('img/products/'.$image)) {
-                $finalImage[] = '/img/products/'.$image;
+            if($fileSystem->exists('img/products/'.$image->getImage())) {
+                $finalImage[] = '/img/products/'.$image->getImage();
             }
         }
         return $finalImage;
