@@ -114,4 +114,15 @@ class AppExtension extends \Twig_Extension
         }
     }
 
+    public function getImagesForProduct($images) {
+        $finalImage = [];
+        $fileSystem = new Filesystem();
+        foreach ($images as $image) {
+            if($fileSystem->exists('img/products/'.$image)) {
+                $finalImage[] = '/img/products/'.$image;
+            }
+        }
+        return $finalImage;
+    }
+
 }

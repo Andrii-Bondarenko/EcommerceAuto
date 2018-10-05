@@ -6,9 +6,10 @@
                 <div class="product-block__main main-product">
                     <div class="main-product__img slider-product">
                         <div class="slider-product__main slider-for" >
-                            {% if data.product.images is defined and data.product.images is not empty %}
-                                {% for image in data.product.images %}
-                                    <div><img src="{{ asset('/img/products/'~image.image)|imagine_filter('product_main') }}"></div>
+                            {% set images = getImagesForProduct(data.product.images) %}
+                            {% if images is defined and images is not empty %}
+                                {% for image in images %}
+                                    <div><img src="{{ asset(image)|imagine_filter('product_main') }}"></div>
                                 {% endfor %}
                             {% else %}
                                 <div><img src="{{ asset('/img/design/no-image.jpg')|imagine_filter('product_main') }}"></div>
