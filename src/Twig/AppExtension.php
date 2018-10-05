@@ -14,6 +14,8 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 class AppExtension extends \Twig_Extension
 {
@@ -35,7 +37,8 @@ class AppExtension extends \Twig_Extension
             new \Twig_SimpleFunction('getCatalogUrl', array($this, 'getCatalogUrl')),
             new \Twig_SimpleFunction('getCatalogProductUrl', array($this, 'getCatalogProductUrl')),
             new \Twig_SimpleFunction('getImageForProductCatalog', array($this, 'getImageForProductCatalog')),
-            new \Twig_SimpleFunction('getCropString', array($this, 'getCropString'))
+            new \Twig_SimpleFunction('getCropString', array($this, 'getCropString')),
+            new \Twig_SimpleFunction('getImageCatalog', array($this, 'getImageCatalog'))
         );
     }
 
@@ -73,6 +76,7 @@ class AppExtension extends \Twig_Extension
 
     public function getImageForProductCatalog($images)
     {
+        $fileSystem = new Filesystem();
         $current = null;
         if(!empty($images)) {
             foreach ($images as $image) {
@@ -80,11 +84,14 @@ class AppExtension extends \Twig_Extension
                 break;
             }
         }
-        if(empty($current)) {
-            $current = 'no_image.jpg';
+
+        if(empty($current) || !$fileSystem->exists('/img/brands/'.$current)) {
+            return '/img/design/no-image.jpg';
+        } else {
+            return '/img/products/'.$current;
         }
 
-        return '/img/products/'.$current;
+
     }
 
     public function getCropString($string, $length)
@@ -96,6 +103,15 @@ class AppExtension extends \Twig_Extension
             return $string;
         }
 
+    }
+
+    public function getImageCatalog($image) {
+        $fileSystem = new Filesystem();
+        if ($fileSystem->exists('/img/brands/'.$image)) {
+           return '/img/brands/'.$image;
+        } else{
+            return '/img/design/no-image.jpg';
+        }
     }
 
 }

@@ -6,6 +6,7 @@
                 {% for key,item in data.catalog_addition.items %}
                     <div class="first-catalog__item">
                         <a href="#" class="first-catalog__link">
+
                             <img src="{{ asset('/img/brands/'~item.image)|imagine_filter('catalog_item_main') }}" class="first-catalog__img" >
                             <span class="first-catalog__name">{{ item.name }}</span>
                         </a>
