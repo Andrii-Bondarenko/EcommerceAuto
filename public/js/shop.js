@@ -118,4 +118,8 @@ $(document).ready(function () {
     $(document).on('click', '.form-group input', function (e) {
        $(this).parent().find('span').remove();
     });
+
+    $(document).on('click', '#input-phone', function (e) {
+        $('.feedback-mistake').remove();
+    });
 });
