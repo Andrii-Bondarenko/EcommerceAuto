@@ -85,7 +85,7 @@ class AppExtension extends \Twig_Extension
             }
         }
 
-        if(empty($current) || !$fileSystem->exists('/img/brands/'.$current)) {
+        if(empty($current) || !$fileSystem->exists('img/brands/'.$current)) {
             return '/img/design/no-image.jpg';
         } else {
             return '/img/products/'.$current;
@@ -107,7 +107,7 @@ class AppExtension extends \Twig_Extension
 
     public function getImageCatalog($image) {
         $fileSystem = new Filesystem();
-        if ($fileSystem->exists('/img/brands/'.$image)) {
+        if ($fileSystem->exists('img/brands/'.$image)) {
            return '/img/brands/'.$image;
         } else{
             return '/img/design/no-image.jpg';
