@@ -177,7 +177,7 @@ class ProductController extends EasyAdminController
                 if (empty($productAlias)) {
                     $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,40)));
                 } else {
-                    $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,35)).'-'.$item['inside_code']);
+                    $product->setAlias(mb_strtolower(substr($this->translit($item['name']),0,30)).'-'.$item['inside_code']);
                 }
                 $product->setDescription($item['garanty']);
                 $product->setCounry($item['country']);
