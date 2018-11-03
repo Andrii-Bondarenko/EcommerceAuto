@@ -232,9 +232,21 @@ class CatalogController extends Controller
         /** @var $qb QueryBuilder*/
         $qb = $this->getDoctrine()->getManager()->getRepository(Product::class)
             ->createQueryBuilder("product");
+        $searchArr = explode(' ',$search);
+        if(!empty($searchArr)) {
+            $index = 0;
+            foreach ($searchArr as $word) {
+                if(!empty($word)) {
+                    $index++;
+                    $qb->andHaving( 'product.name LIKE :query'.$index)
+                        ->setParameter('query'.$index, '%' . $word . '%');
+                }
+            }
+        } else {
+            $qb->having( 'product.name LIKE :query')
+                ->setParameter('query', '%' . $search . '%');
+        }
 
-        $qb->having( 'product.name LIKE :query')
-            ->setParameter('query', '%' . $search . '%');
 
         $adapter = new DoctrineORMAdapter($qb);
         $pagerfanta = new Pagerfanta($adapter);
